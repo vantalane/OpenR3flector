@@ -1,0 +1,63 @@
+
+Sidenote STM32 is LQFP100.
+U300 specifically
+
+NOTE***************************************************************
+Due to The drive mode of M1, M2 and M3, PWM_A controls AB outputs, PWM_B controls CD outputs.
+CD inputs are unused. 
+
+
+Pin 1 GVDD_B +11.67V (12V from box Vin)
+PIN 2 - OTW - connected to PE15 gpio uC
+PIN 3 - FLT - connected to PE14 gpio uC
+PIN 4 - PWMA - through R92 connd PE9   
+PIN 5 - RST AB
+10k pulldown to GND with capacitor.
+(R303) and R302? 10K 
+Connected to R89 through to PE7
+
+
+PIN 6 PWM B - R91 through to PE8
+PIN 7 OC_ADJ - R300 R301 and C304.
+	programming for voer over current prog
+	R300 - 27k 
+	R301 - 1R
+
+PIN 8 GND
+PIN 9 AGND
+
+PIN 10 VREG
+
+PIN 11 M3 - connected to (pin 9 AGND)
+PIN 12 M2 - connected to (pin 10 VREG)
+PIN 13 M1 - connected to (pin 9 AGND)
+PIN 14 PWM C - connected to R54 THEN PB2
+PIN 15 RESET CD - connected together with (pin 5 reset AB)
+PIN 16 PWM D - connected to GND
+PIN 17 VDD  - Supply for digital voltage regulator CONNECTS TO D555 DIODE
+The circuit between two DRV's must be the voltage regulator 
+
+PIN 18 GVDD_C same as PIN 17 VDD?
+
+SIDE NOTE:
+	gate drive supply circuit is probably a buck-boost with stable 11.67V output
+
+PIN 19 GVDD_D gate drive supply (D555 supply circuit) +11.67V
+PIN 20 bootstrap
+PIN 21 POWER supply for motor drive from L550 supply 
+PIN 22 Pitch UP mtoor connection
+PIN 23 power ground
+PIN 24 Pow GND
+PIN 25 is OUT_C, parallel with OUT_D (thick blue pitch UP drive)
+PIN 26 POW GND
+PIN 27 bst
+PIN 28 bst 
+PIN 29 pow gnd 
+PIN 30 is OUT_B and parallel with OUT_A (thick white, pitch DOWN drive)
+PIN 31 GND
+PIN 32 GND 
+PIN 33 is OUT_A and parallel with OUT_B (pitch down drive)
+PIN 34 pow GND
+PIN 35 bst
+PIN 36 GND
+

@@ -1,0 +1,66 @@
+
+Sidenote STM32 is LQFP100.
+U350 specifically
+
+Pin 1 GVDD_B from small BUCKBOOST converter in center
+PIN 2 - OTW - connected to PB15 (pin 54)
+PIN 3 - FLT - connected to PB14 (pin 53)
+
+PIN 4 - PWM_A - through R96 connd PE11 (pin 42)  
+
+PIN 5 - RST_AB	- thru R71 to PB12 (pin 51)
+
+
+PIN 6 PWM_B - through R95 to PE10 (pin 41) 
+
+PIN 7 OC_ADJ - analog current limit 
+
+PIN 8 GND
+PIN 9 AGND
+
+PIN 10 VREG
+
+PIN 11 M3 - connected to GND
+PIN 12 M2 - connected to GND
+PIN 13 M1 - connected to GND
+
+
+PIN 14 PWM_C - connected thru R98 to PE13 (pin 44) 
+
+PIN 15 RESET CD - thru R73(?) PB13 (pin 52) 
+
+PIN 16 PWM D - connected R97 to PE12
+
+PIN 17 VDD  - Supply for digital voltage regulator (from gate BUCKBOOST switch)
+
+PIN 18 GVDD_C - same as PIN 17 VDD?
+
+SIDE NOTE:
+	gate drive supply circuit is probably a buck-boost with stable 11.67V output
+
+PIN 19 GVDD_D gate drive supply (D555 supply circuit) +11.67V
+PIN 20 bootstrap
+PIN 21 POWER supply for motor drive from L550 supply 
+
+PIN 22 OUT_D - N.C. molex 14 pin
+
+PIN 23 power ground
+PIN 24 Pow GND
+
+PIN 25 is OUT_C - N.C. Molex 15 pin 
+
+PIN 26 POW GND
+PIN 27 bst
+PIN 28 bst 
+PIN 29 pow gnd 
+
+PIN 30 is OUT_B - thick brown YAW right 
+
+PIN 31 GND
+PIN 32 GND 
+
+PIN 33 is OUT_A thick green, YAW left 
+
+PIN 34 pow GND
+PIN 35 bst
+PIN 36 GND

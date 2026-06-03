@@ -1,0 +1,8 @@
+<driversList>
+	<devGroup group="Telescopes">
+		<device label="OpenR3flector">
+			<driver name="r3 indi driver">indi_r3_telescope</driver>
+			<version>1.0</version>
+		</device>
+	</devGroup>
+</driversList>

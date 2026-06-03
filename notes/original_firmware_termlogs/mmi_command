@@ -1,0 +1,119 @@
+
+During the startup, during this part:
+
+ 151 mmi retry #0
+[WRN] 264 mmi retry #1
+[WRN] 377 mmi retry #2
+[WRN] 490 mmi retry #3
+[WRN] 603 mmi retry #4
+[WRN] 716 mmi retry #5
+[WRN] 829 mmi retry #6
+[WRN] 942 mmi retry #7
+[WRN] 1055 mmi retry #8
+[WRN] 1168 mmi retry #9
+[ERR] 1180 mmi 0x12 comm error on r
+[LOG] 1183 multisat mmi device not present
+[LOG] 1187 Resume tuner
+
+
+The following packet is being sent out on the MMI port in RS485 level:
+
+(measured on data out pin of driver IC.)
+h28 h31 h32 h72 h29
+
+sending command out usin "mmi aaa" is
+h28 h61 h61 h61 h29
+
+the rs 485 mmi thing has sbaud 38400 8N1
+
+
+
+during search we have the following:
+
+search
+[LOG] 129234 search task started
+[LOG] 129237 el duty 95
+[LOG] 129239 az duty 83
+[LOG] 129242 cur sat flag 0001
+[LOG] 129245 searching ASTRA 3 23.5E (3)
+mas> [LOG] 129249 248 az ZERO!!
+[LOG] 129252 Resume tuner
+[LOG] 129255 Init tuner I2C bus
+[LOG] 129358 Disable serit frontend 3V3 (PE1)
+[LOG] 129362 Disable serit frontend 1V0 (PE0)
+[LOG] 129466 Enable serit frontend 3V3 (PE1)
+[LOG] 129470 Enable serit frontend 1V0 (PE0)
+[LOG] 129778 stv0903 chip identification: 0x20
+[LOG] 129799 stv0903 clock: 136000000
+[LOG] 129811 NIT init
+[LOG] 130513 NIT reg 8000: 01
+[LOG] 130516 NIT reg 8001: 40
+[LOG] 130520 NIT reg 8002: 02
+[LOG] 130523 NIT reg 8003: 10
+[LOG] 130526 NIT reg 8004: 05
+[LOG] 130529 NIT reg 8005: 40
+[LOG] 130532 NIT reg 8006: 0b
+[LOG] 130535 NIT reg 8007: 00
+[LOG] 130538 NIT reg 8008: 00
+[LOG] 130541 NIT reg 8009: 01
+[LOG] 130544 NIT version 0x16
+[LOG] 130547 NIT id 0x4e
+[LOG] 130550 NIT acquisition stop
+[LOG] 130553 Enable LNB 1
+[LOG] 130586 305 az ZERO!!
+[LOG] 130588 323 az ZERO!!
+[LOG] 130604 sat ASTRA 3 23.5E tun 0 ok
+[LOG] 131086 305 az ZERO!!
+[LOG] 131088 323 az ZERO!!
+[LOG] 131091 new elevation 10*deg: 1060
+[LOG] 131586 305 az ZERO!!
+[LOG] 131588 323 az ZERO!!
+[LOG] 131591 az duty 83
+[LOG] 133086 az cur=147 prev=2147483647
+[WRN] 133089 Hall dly 15
+[LOG] 135086 az cur=348 prev=147
+[WRN] 135089 Hall dly 13
+[LOG] 137086 az cur=549 prev=348
+[WRN] 137089 Hall dly 13
+[LOG] 139086 az cur=751 prev=549
+[WRN] 139089 Hall dly 14
+[LOG] 141086 az cur=953 prev=751
+[WRN] 141089 Hall dly 14
+[LOG] 143086 az cur=1157 prev=953
+[WRN] 143089 Hall dly 14
+[LOG] 145086 az cur=1363 prev=1157
+[WRN] 145089 Hall dly 13
+[LOG] 147086 az cur=1568 prev=1363
+[WRN] 147089 Hall dly 14
+[LOG] 149086 az cur=1774 prev=1568
+[WRN] 149089 Hall dly 14
+[LOG] 151086 az cur=1981 prev=1774
+[WRN] 151089 Hall dly 13
+[LOG] 153086 az cur=2188 prev=1981
+[WRN] 153089 Hall dly 14
+[LOG] 155086 az cur=2393 prev=2188
+[WRN] 155089 Hall dly 14
+[LOG] 157086 az cur=2579 prev=2393
+[LOG] 157686 new elevation 10*deg: 1040
+[LOG] 157689 el duty 5
+[LOG] 158186 az duty 17
+[LOG] 159586 az cur=2434 prev=2147483647
+[WRN] 159590 Hall dly 14
+[LOG] 161586 az cur=2221 prev=2434
+[WRN] 161589 Hall dly 13
+[LOG] 163586 az cur=2007 prev=2221
+[WRN] 163589 Hall dly 13
+[LOG] 165586 az cur=1795 prev=2007
+[WRN] 165589 Hall dly 13
+[LOG] 167586 az cur=1579 prev=1795
+[WRN] 167589 Hall dly 14
+[LOG] 169586 az cur=1364 prev=1579
+[WRN] 169589 Hall dly 13
+[LOG] 171586 az cur=1148 prev=1364
+[WRN] 171589 Hall dly 14
+[LOG] 173586 az cur=931 prev=1148
+[WRN] 173589 Hall dly 14
+[LOG] 175586 az cur=714 prev=931
+[WRN] 175589 Hall dly 13
+[LOG] 177586 az cur=497 prev=714
+[WRN] 177589 Hall dly 13

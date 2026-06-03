@@ -1,0 +1,9 @@
+# OpenR3flector firmware + INDI driver
+*.cache
+
+# Extras
+*.FCBak
+*.vscode
+
+# For notes, extras
+*notrack.*

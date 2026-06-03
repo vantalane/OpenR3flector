@@ -1,0 +1,40 @@
+
+
+
+Motor control architecture exists out of
+
+There are two frames to work with. The world frame, and the body frame.
+
+The user controls the hardware with real-world units and world frame alt/az coords. These are then internally converted to our body equivalent.
+
+
+
+USER CONTROL
+	uses realworld values such as degrees per second etc
+	user motor functions are:
+
+
+
+TRAJECTORY CONTROL
+
+	stores the target position and increments in degrees
+
+	trajectory plans and outputs are in motor encoder counts in float
+	
+	Works in a position mode or constant velocity mode
+
+	uses TrajcetoryState_t to store trajectory config params
+	and trajectory position outputs
+
+MOTOR POSITION CONTROL (PID)
+
+	"reads" the trajectory control output through supervisor 
+	functions in encoder counts as int32_t
+
+	uses AxisState_t as control memory and axis velo measurements
+
+
+
+	implementation TODOs
+
+	some UART commands need to be moved into motor control files

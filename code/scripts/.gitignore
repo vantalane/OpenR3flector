@@ -1,0 +1,6 @@
+# make a venv for pip stuff
+/venv/*
+
+# script junk
+/scan_2*
+/scan_fly_2*

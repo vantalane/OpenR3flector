@@ -1,0 +1,17 @@
+
+So far Gpredict works with the antenna bridge script.
+
+Which formats azimuth and elevation data into the format my device expects.
+
+
+
+Thus, now getting to Kstars, which is even cooler, but apparently we'll need to interface the device as a INDI protocol thing.
+
+For this, we can provide a "driver" of our device, specifically well let indi server see it, and Kstars can use it.
+
+The indi drivers can be declared here:
+	/usr/share/indi
+Here we declare what, and which driver to use or something.
+which also names the executible file.
+
+The script we use as driver is soft linked in /usr/local/include to be accessible.

@@ -1,0 +1,73 @@
+
+
+P400
+1 3v3
+2 (floating?)
+3 UART TX 
+4 UART RX
+5 (low RX?)
+6 GND 
+
+UART SPECS:
+115200
+8 bit 1 stop no parity
+ending: \r\n
+
+the device has CLI help command exists
+
+help
+        List CLI commands
+sat
+        Usage: sat [idx]        List MAS satellites config
+tune
+        Usage: tune sat_idx tun_idx     Tune on sat_idx/tun_idx
+i2cw
+        Usage: i2cw byte0 byte1 byte2...        i2c write
+i2cr
+        Usage: i2cr count byte0 [byte1] ...     i2c read
+mot
+        Usage: mot [21|22]cmd   Send cmd to motor
+open
+        Usage: open     Open dish
+close
+        Usage: close    Close dish
+search
+        Usage: search   Move dish for searching
+sys
+        Usage: sys suspend|resume       System commands
+mmi
+        Usage: mmi cmd  Send cmd to mmi
+diq
+        Usage: diq {start|stop} diseqc detection start/stop
+mas> 
+
+
+mot command crashes:(
+
+sys suspend and resume turns on or off the NIT
+
+potentially interesting strings
+
+res-tun
+res-mot
+nitstart
+nitstop
+
+motor_goto
+motor_start
+
+POTENTIAL ARGUMENTS
+	sys : resume, suspend, res-mot, nitstart, nitstop
+
+argument format could be
+%s %c[J %c%c%c
+
+
+JTAG WORK
+Found 1 stlink programmers
+  version:    V2J46S7
+  serial:     B55B5A1A00000000E062EF01
+  flash:      524288 (pagesize: 16384)
+  sram:       131072
+  chipid:     0x431
+  dev-type:   STM32F411xC_xE

@@ -1,0 +1,166 @@
+ PCB NOTES
+
+STM32F411VET6 used clocks are
+
+8MHz main clock
+	PH0-OSC_IN
+	PH1-OSC_OUT
+32.768 RTC?
+	PC14-OSC32_IN
+	PC15-OSC32_OUT
+
+
+ Around the motor pin, there are the following IC's:
+ 
+ CM0109B - level shift IC?
+	batch num : 06K !G4 A6LD
+
+
+
+mete@polarbear:~$ st-info --probe
+Found 1 stlink programmers
+  version:    V2J37S7
+  serial:     22002A00102D343632525544
+  flash:      524288 (pagesize: 16384)
+  sram:       131072
+  chipid:     0x431
+  dev-type:   STM32F411xC_xE
+
+
+doing st-flash read firmware.bin 0x08000000 0x10000
+did this to get the complete block 0. This is in the firmwre folder.
+
+ 
+
+
+ P400 connector pinout:
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 
+ (ALL CM0198 enable PINS are connected together!)
+All enables connect to PA1
+
+
+MOTOR CONNECTOR TO LEVEL SHIFTERS pinout
+
+SHIFTER U450 ------
+		to the inputs of the shifter
+(thin orange) PITCH Encoder -> diode protection d450, L450 bead filter -> 100R -> SHIFTER pin 6 B Input
+thin green -> same filter and R-> SHIFTER pin 3 A Input
+thin white -> same filts and R -> Shifter pin 10 C
+thin purple -> filters -> D input 
+
+shifted to uC
+
+(pitch endstop) A -> E to PA3
+				(through R453)
+(pitch encoder) B -> F to PA6
+				(thru R452)
+(yaw encoder) 	C -> G to PA7
+					R454
+(yaw endstop)	D -> H to PA4 
+					R456
+
+SHIFTER U451 ------
+		to the inputs of the shifter
+N.C. (MOLEX 4) -> filters -> input B 
+N.C. (MOLEX 3) -> filters -> inbut A
+thin yellow -> L457 (same filters as rest) R466 -> input C
+
+shifted to uC 
+(N.C.) 			A -> E to PA5
+(N.C.) 			B -> F to PB0
+(YELLOW)		C -> G to PB1
+
+
+CONNECTOR POWER AND MOTOR pins into PCB
+
+thin red goes through R463 and connects to big filter coil L550's output. (system 12V)
+
+motor pins
+
+	to U350 DRV8432 has 4 connections to molex ----------------------------------
+thick brown -> big bead L351 -> OUT_B (pin 30) of 
+thick green -> big bead L350 -> OUT_A (pin 33) of U350 DRV8432
+
+N.C. (molex 14) -> big bead L353 -> OUT_D (pin 22) of U350 DRV8432
+N.C. (molex 15) -> big bead L352 -> OUT_C (pin 25)
+
+	to U300 DRV8432 has 2 connections to molex  ----------------------------------
+thick white -> L300 -> OUT_A (pin 33) 
+				OUT_B -> (L303) -> is connected parallel
+thick blue -> L304 -> OUT_D (pin 22)
+				OUT_C  is connected parallel
+
+
+
+
+MICROCONTROLLER TO UI AND LEDS
+
+LED (THT RED LEFT) DS600 is connected to PD13
+LED (THT RED RIGHT) DS601 is connected to PD14 
+
+band cable left to right
+
+common anode + 3v3 (from U551)
+button N.O. connects to common anode
+ through R603 connected to PA0 (detect PULL DOWN)
+
+LED RED cathode thru R605 to PD8
+LED GREEN cathode - thru R608 to PD9
+
+PIEZO connected through a capacitor with PD15
+
+
+
+PE0 connects to U552 WPMDH1200601 step down regulator's enable pin. EN has a pulldown resistor.
+
+
+CONNECTORS 
+
+P52 - 3rd pin connects to R105 (100R) PD3
+		on the uC side the trace also connects to R102
+
+P400
+1 3v3
+2 (floating?)
+3 UART TX  8
+4 UART RX
+5 (low RX?)
+6 GND 
+
+UART SPECS:
+115200
+8 bit 1 stop no parity
+ending: \r\n
+
+J52
+ one of jump pins connect to BOOT0 (pin 94), other is 3V3
+
+
+J400
+
+UNNAMED 6 pin connector next to P50 pinout:
+1   3v3
+2   TCLK (PA14)
+3   GND 
+4   TMS (PA13)
+5   RST (NRST)
+6   TDO (probably TDI of PCB) PB3
+
+
+J52
+
+
+
+
+
+/////////////////////////////////////////// BELOW HERE, MAINLY THE SPARTAN SIDE THINGS
+
+Power supplied to the satellite TV thing is by the wurth power module
+

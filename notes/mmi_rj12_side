@@ -1,0 +1,211 @@
+
+FPGA likely operates the TV menu and overlay stuff.
+
+
+Chips I see 
+
+
+U151 microchip 24AA2561 SN
+	256kB I2C two wire EEPROM
+
+pinout 1-4 connected to GND
+5(SDA) -> R_n -> PB7 
+6(SCL) -> R59 -> PB6 
+7 (WP) -> 
+8 3v3
+
+
+
+NXP IS602B 9930001 YuD19 52A
+	is SC18IS602B actually
+
+	I2C to SPI bridge IC, we know the ID as 0x28 on I2C1
+
+	connects to : 
+		!SS0/GPIO0	-> pin 14 of cl257 (4B1)
+		!SS1/GPIO1	-> pin 1 of CL257 (S [select])
+		!RESET 		-> fpga pin 45 (VCCO_2)
+		MISO 		-> pin 11 of CL257 (3B1 ch3 in/out 1)
+		MOSI 		-> pin 5 of CL257 (2B1 ch2 in/out 1) 
+		SDA			-> I2C1 bus of STM32
+		SCL			-> I2C1 bus of STM32
+		!INT		-> STM32 PC13 gpio
+		!SS2/GPIO2	-> open?
+		SPICLK		-> pin 2 of CL257 (1B1)
+		!SS3/GPIO3	-> open?
+		A0,A1,A2 	-> GND (addr 0x28)
+
+WE determined the inputs, now find the outs
+
+Texas CL257 9AK G4 AH39
+	is SN74CBTLV3257PWR apparently
+	4 Bit 1 of 2 Muxer-Demuxer
+
+		S	-> !SS1 of IS602B
+		1B1 -> SPICLK of IS602B
+		1B2 -> pin 52 fpga IO_L12P_2
+		1A	-> SCLK of MX25V1006E flash
+		2B1 -> MOSI of IS602B
+		2B2 -> pin 46 of fpga O_2/MOSI/CSI_B 
+		2A -> SI/SIO0 of MX25V1006E flash
+
+		3A -> SO/SIO1 of MX25V1006E flash 
+		3B2 -> pin 51 of fpga IO_L11N_2/D0/DIN/MISO (◆)
+		3B1 -> MISO of IS602B 
+		4A -> CS# of MX25V1006E flash
+		4B2 -> pin 27 of fpga IO_L02N_2/CSO_B
+		4B1 -> !SS0
+		!OE -> direct to gnd
+
+
+Logic of the mux-demux above is as follows:
+
+The Mux switches a single port between two ports.
+As in, 1A can go to 1B1 or 1B2. 
+Output enable is tied to GND, thus 1 of 2 connections always happen.
+ SELECT (S pin) high ties common to 2nd port (1A -> 1B2).
+
+Wiring is 
+	1A is SCLK of flash
+		1B1 SCLK from I2C to SPI bridge
+		1B2 SCLK from FPGA
+	2A is MOSI of flash
+		2B1 mosi of bridge
+		2B2 mosi of fpga
+
+	3A MISO of flash
+		3B1 miso IS602B
+		3B2 miso fpga
+
+	4A chip select of flash
+		4B1 !SS0 (slv sel 0) of bridge
+		4B2 slv select of fpga
+
+MUX selection controlled thru SPI SS1 of I2C-SPI bridge. Which can be used as a GPIO (?) directly.
+Thus using SS1, a takeover of the flash can be done from the STM. Then, SS0 can be used to read-write flash memory.
+
+
+
+U152 MXIC 25V1006E MI-136
+	Macronix MX25V1006E
+	1Mbit CMOS flash
+	PIN-3 (WP#) -> Q150,r174, 
+
+Q150 nMOS can pull WP# pin of flash LOW. 
+
+
+J150 pin header 2P (write protect flash, reset fpga combi)
+
+	One of the PINS goes to GND through a resistor.
+
+	Other side is connected to the PROG_B pin of FPGA, together with:
+	- STM32's x pin thru 100R.
+	- fpga prog -> R173 (10k) -> 3v3 side of R174 (1k) -> WP pin of flash.
+
+  Which means, the jumper (or STM) can pull pull fpga's prog pin DOWN, which normally would be PULLED UP.
+  thus, while PROG is high, WP of flash is pulled DOWN, which protects the FLASH from being written.
+  "allowing" the WP to be HIGH, allows flash to be edited, which implies FPGA to be in a RESET state (Prog low).
+
+  Thus summary again, prog b low, fpga in reset, flash editable. Can be done via short, or STM32 port tied LOW.
+
+
+J151 pin header NC next to fpga
+
+pin 1 - 3V
+pin 2 - TMS of FPGA
+pin 3 - TCLK of FPGA 
+pin 4 - TDO of FPGA 
+pin 5 - TDI of FPGA
+pin 6 - GND
+
+
+
+J152 pin header connector
+
+	pin 1 3v3 
+	pin 2  chip select of U12 MXIC flash
+	pin 3 SCLK of U12 MXIC flash
+	pin 4 SO/SIO1 of U12 MXIC flash
+	pin 5 SI/SIO0
+	pin 6 GND 
+
+
+U150 XILINX XC3S50A FPGA
+	VQ100 footprint
+	pin 79 - VCCO_0 output supply V 
+		conn'd to Q150 (mostfet/fet etc. likely)
+		meant for "OR" mode write protect?
+
+U500 NBH29 LNB supply and control IC with step up & I2C.
+	pin 3 - dsq goes to PA2
+	pin 5 - GND
+	pin 6 - scl R66 to PB10
+	pin 7 - sda to R57 to PB3
+	pin 12 - vcc general 12V input to pcb supply
+	pin 13 - goes thru diodes an connects to chinese RF frontend
+	pin 14 - 
+	pin 16 - 
+
+U552 Wuerth WPMDH 1200601 supply module
+	variable step down requlator
+	supplies frontend 1V
+	PE0 of stm32 to its enable
+
+
+
+HFD4/12-S subminiature signal RELAY
+ 12V, single side stable standard smt 
+
+	coil connected to 12V, Q250 pulls it down which is PE2 connected.
+	what does this coil do?
+	two sides are parallel!!
+
+	pins 2-7-3-6 are connected to first pin in RF frontend
+	also connected through to TV center pin. 
+
+	center pins of F connector 1 and 2 are AC decoupled through ferrtes L253 and l252. 
+	the satellite F connector is clamped using the diodes.
+
+
+Texas HVD75 87K 
+	SN65HVD75 
+	RS-485 transceiver
+
+
+
+
+RJ12 connector pinout 
+numbered in the order of, when looking at the port, left conductor is 1, right is 6
+used THT connector has 6 marking at right.
+
+
+1- NC? 
+2- NC?
+3- GND
+4- HVD75 A port (pin 6)
+5- HVD75 B port (pin 7)
+6- ~11.3 VCC
+
+
+RSHVD75 RS-485 driver IC connections
+
+pin 1 - R / Receive data out / 			wired to PD6
+pin 2 - !RE / Active low, RX enable / 	wired to GND 
+pin 3 - D / Driver data input / 			TO PD4
+pin 4 - DE port (active high DRV EN)	wired to PD5
+pin 5 - GND 							GND
+pin 6 - A port DRV out or RX in (complementary to A)
+pin 7 - B port DRV out or RX in (complementary to B)
+pin 8 - Vcc 3V supply
+
+
+
+
+
+U553 
+	was a fckn LDO, 1A low queiescent ldo. likely fpga supply.
+	marketed as MCP1726
+
+
+
+

@@ -1,0 +1,30 @@
+
+
+Dish diameter:
+82cm x 88cm
+
+
+
+approx distance between focal to dish center
+65cm
+
+focal to horizontal edges 70cm
+
+
+------------------MATH JUNK
+
+c^2 = a^2+b^2
+
+70^2 = 41^2
+
+sohcahtoa
+
+sin(beamwidth) = 41/70
+arcsin(41/70) = 35.85 degrees
+
+horizontal fov = 71 
+
+
+guestimate optimal feed gain/beamsize
+
+

@@ -1,0 +1,105 @@
+
+Single note to rule them all. This contains the pinout allocation by function for overview
+
+STM32F411E pinout, function wise.
+
+LQFP100 PIN 1 	- PE2 - connects to R252 -> Q250 -> HFD4/12-S (RELAY) (likely supply)
+LQFP100 PIN 2 	- PE3 - SERIT RF frontend RESET pin
+LQFP100 PIN 3 	- PE4 - SERIT rf frontend ERROR pin 
+LQFP100 PIN 4 	- PE5 - connects to prog pin of FPGA. 				(spi4&5 miso capable)
+LQFP100 PIN 5 	- PE6 - connects to fpga pin 7 LO_L02N_3 vref_3  	(spi4&5 mosi capable)
+LQFP100 PIN 6 	- VBAT		-R87, thru diode d52 to J52, other side of BOOT0 jumper
+LQFP100 PIN 7 	- PC13 - connects to R184 to IS602B interrupt pin 
+LQFP100 PIN 8 	- OSC IN - xtal 32khz
+LQFP100 PIN 9 	- OSC OUT xtal 32 khz
+LQFP100 PIN 10 	- VSS 
+LQFP100 PIN 11 	- VDD
+LQFP100 PIN 12 	- OSC in xtal xtal hispeed
+LQFP100 PIN 13 	- OSC OUT xtal hispeed
+LQFP100 PIN 14 	- NRST BTN
+LQFP100 PIN 15 	- PC0 			- likely TP50 testpad 
+LQFP100 PIN 16 	- PC1			- likely tp51 testpad 
+LQFP100 PIN 17 	- PC2			- TP52? 
+LQFP100 PIN 18 	- PC3 -
+LQFP100 PIN 19 	- VDD
+LQFP100 PIN 20 	- VSSA/VREF-
+LQFP100 PIN 21 	- VREF+
+LQFP100 PIN 22 	- VDDA -
+LQFP100 PIN 23 	- PA0				- UI film button (pull down)
+LQFP100 PIN 24 	- PA1				- U450 CM0109B level shifter enable pin
+LQFP100 PIN 25 	- PA2 				- connects to R500 to U500 NBH29 LNB supply (DSQIN/EXTM)
+LQFP100 PIN 26 	- PA3				- U450 CM0109B level shifter A->E pin (pitch endstop)
+LQFP100 PIN 27 	- VSS
+LQFP100 PIN 28 	- VDD 
+LQFP100 PIN 29 	- PA4				- U450 CM0109B level shifter D->H pin (yaw endstop)
+LQFP100 PIN 30 	- PA5 				- U451 CM0109B level shifter A->E pin (molex N.C. input)
+LQFP100 PIN 31 	- PA6				- U450 CM0109B level shifter B->F pin (pitch encoder)
+LQFP100 PIN 32 	- PA7				- U450 CM0109B level shifter C->G pin (yaw encoder)
+LQFP100 PIN 33 	- PC4 -
+LQFP100 PIN 34 	- PC5 				- Input supply level, voltage divider for SW detect. 
+LQFP100 PIN 35 	- PB0				- U451 CM0109B level shifter B->F pin (molex N.C. input)
+LQFP100 PIN 36 	- PB1 				- U451 CM0109B level shifter C->G pin (molex yellow input)
+LQFP100 PIN 37 	- PB2				- U300 (pitch) DRV8432 mtr H PWM_C pin (wired, but unused)
+LQFP100 PIN 38 	- PE7				- U300 (pitch) DRV8432 motor H bridge RST_AB pin
+LQFP100 PIN 39 	- PE8 -				- U300 (pitch) DRV8432 mtr H PWM_A pin (OR PWM_B???)
+LQFP100 PIN 40 	- PE9 				- U300 (pitch) DRV8432 mtr H PWM_B pin (OR PWM_A???)
+LQFP100 PIN 41 	- PE10				- U350 (yaw) DRV842 mtr PWM_B pin
+LQFP100 PIN 42 	- PE11				- U350 (yaw) DRV842 mtr PWM_A pin
+LQFP100 PIN 43 	- PE12				- U350 (yaw) DRV842 mtr PWM_D pin
+LQFP100 PIN 44 	- PE13				- U350 (yaw) DRV842 mtr PWM_C pin
+LQFP100 PIN 45 	- PE14 -			- U300 (pitch) DRV8432 motor H bridge FLT pin
+LQFP100 PIN 46 	- PE15 				- U300 (pitch) DRV8432 motor H bridge OTW pin
+LQFP100 PIN 47 	- PB10				- U500 SCL of LNB ctrl IC 
+LQFP100 PIN 48 	- VCAP_1
+LQFP100 PIN 49 	- VSS 
+LQFP100 PIN 50 	- VDD -
+LQFP100 PIN 51 	- PB12				- U350 (yaw) DRV842 mtr RST_AB pin
+LQFP100 PIN 52 	- PB13				- U350 (yaw) DRV842 mtr RST_CD pin
+LQFP100 PIN 53 	- PB14				- U350 (yaw) DRV842 mtr FLT pin
+LQFP100 PIN 54 	- PB15				- U350 (yaw) DRV842 mtr OTW pin
+LQFP100 PIN 55 	- PD8				- UI film LED red
+LQFP100 PIN 56 	- PD9				- UI film LED green
+LQFP100 PIN 57 	- PD10 				- UNUSED UI PAD
+LQFP100 PIN 58 	- PD11 				- UNUSED UI PAD
+LQFP100 PIN 59 	- PD12 				- UNUSED UI PAD
+LQFP100 PIN 60 	- PD13				- red LED (tht) left
+LQFP100 PIN 61 	- PD14				- red LED (tht) right
+LQFP100 PIN 62 	- PD15				- piezo buzzer
+LQFP100 PIN 63 	- PC6 				-
+LQFP100 PIN 64 	- PC7 				- TO SD card 
+LQFP100 PIN 65 	- PC8 				- TO SD card 
+LQFP100 PIN 66 	- PC9 				- TO SD card
+LQFP100 PIN 67 	- PA8 				- RX frontend R255 - I2C3 SCL 
+LQFP100 PIN 68 	- PA9				- P400 pin 3 (USART1 TX)
+LQFP100 PIN 69 	- PA10				- P400 pin 4 (USART1 RX)
+LQFP100 PIN 70 	- PA11 				- P401 N.C. btn footprint
+LQFP100 PIN 71 	- PA12 				- P401 N.C. btn footprint
+LQFP100 PIN 72 	- PA13				- SWD TMS for prog to the unnamed con
+LQFP100 PIN 73 	- VCAP_2 -
+LQFP100 PIN 74 	- VSS 
+LQFP100 PIN 75 	- VDD -
+LQFP100 PIN 76 	- PA14 				- TCLK on unnamed PROG connector
+LQFP100 PIN 77 	- PA15 - no clue 
+LQFP100 PIN 78 	- PC10 				- TO SD 
+LQFP100 PIN 79 	- PC11 				- TO SD
+LQFP100 PIN 80 	- PC12 				- TO SD
+LQFP100 PIN 81 	- PD0 				- P52 header 1st
+LQFP100 PIN 82 	- PD1 				- P52 header 2st middle
+LQFP100 PIN 83 	- PD2 				- TO SD
+LQFP100 PIN 84 	- PD3 				- P52 header 3rd
+LQFP100 PIN 85 	- PD4				- U400 RSHVD75 (USART2) RS485 driver enable pin
+LQFP100 PIN 86 	- PD5				- U400 RSHVD75 (USART2) RS485 drv TX pin.
+LQFP100 PIN 87 	- PD6				- U400 RSHVD75 (USART2) RS485 drv RX pin.
+LQFP100 PIN 88 	- PD7				- thru r663 -> d650 d651 (diode to gnd, to 3v3) -> R 661, R660(connects to L650) to L650 (prolly V divider) (R662 pulls to gnd). L650 has connection with L252 bead. which has a connection to pin 1 of rf module. there seems to be some kind of Pi network form supply filtering. Or a signal coupling.
+LQFP100 PIN 89 	- PB3				- U500 LNB supply ic SDA pin
+LQFP100 PIN 90 	- PB4				- RF frontend I2C_SDA I2C3_SDA 
+LQFP100 PIN 91 	- PB5 				- to FPGA pin 50 IO_L11P_2/D2
+LQFP100 PIN 92 	- PB6			- I2C SDB of U151 24AA2561 256kB I2C two wire EEPROM (i2c1)
+LQFP100 PIN 93 	- PB7			- I2C SDA of U151 24AA2561 256kB I2C two wire EEPROM (i2c1)
+LQFP100 PIN 94 	- BOOT0 		- J52 jumper
+LQFP100 PIN 95 	- PB8 			- long ah wire, has N.C. resistors R2 (near I2C rf front) and NC R1, connects to pin 1 of U651. likely mosfet
+LQFP100 PIN 96 	- PB9 			- to R150 to fpga pin 10 IO_L03N_3/LHCLK1
+LQFP100 PIN 97 	- PE0 			- to r557 Enable serit frontend 1V0 to WPMDH enable pin
+LQFP100 PIN 98 	- PE1 			- (from old firmware log) Enable serit frontend 3v3. to R251 to U250 (must be a 3v3 LDO or switch)
+LQFP100 PIN 99 	- VSS
+LQFP100 PIN 100 - VDD

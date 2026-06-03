@@ -1,0 +1,29 @@
+
+Incoming 12V POWER line goes through
+
+RBO08 IC - Reversed batery and over voltage protection circuit
+(1) Input connected to Vin to BOX
+(2) TAB is connected to GND
+(3) Connected to diode D551
+
+D551 is high voltage schottky, extra reverse protection
+orange wire at power in connects to the anode of D551??
+	reason is, the orange wire is the "switched" supply, thus when orange wire is powered, 
+	it "injects" power to the main power line,
+	and also informs the uC through a (probably, need verification) through V divider.
+
+	voltage divider is R552, and R553 with D554 and D553 as protection.
+	protected and divided "switched" supply goes to PC5 on microcontroller
+
+Where RBO output connects to D551, it also splits to supply the MOLEX connector loopback.
+
+RBO -> loopback -> fuse F550 -> L550 (big filter coil) -> 
+
+after L550 there is a small bead filter going to WE78 fixed 3v3 OUTPUT regulator
+
+
+motor drivers MOTOR supply (PVDD's)
+also goes through L550 coil, and L551 to microcontroller side.
+
+
+ 

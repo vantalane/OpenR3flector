@@ -1,0 +1,12 @@
+[submodule "private"]
+	path = private
+	url = https://github.com/vantalane/satenne_r3_privates.git
+[submodule "code/STM32CubeF4"]
+	path = code/STM32CubeF4
+	url = https://github.com/STMicroelectronics/STM32CubeF4
+[submodule "code/indi"]
+	path = code/indi
+	url = https://github.com/indilib/indi.git
+[submodule "code/sgp4"]
+	path = code/sgp4
+	url = https://github.com/vantalane/sgp4

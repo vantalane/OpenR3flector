@@ -1,0 +1,80 @@
+LOG] 8 Hello from MAS2 bootloader
+[LOG] 11 bootloader git version: db8e328
+[LOG] 15 bootloader compile date: 20200831-121645
+[LOG] 20 Valid map found @0x07d000
+[LOG] 23 sats: 0x8000
+[LOG] 25 lang: 0xc000
+[LOG] 28 fw:   0x010000
+[LOG] 30 fw version:   5042
+[LOG] 33 sats version: 5042
+[LOG] 48 Pin C7: 0
+[LOG] 49 SD card not present
+[ERR] 1074 cmd 1 failed
+[LOG] 1076 About to launch main app @0x010000
+
+
+[LOG] 8 Hello from MAS2 multisat
+[LOG] 11 multisat version: 5042
+[LOG] 14 multisat git version: db8e328
+[LOG] 18 multisat compile date: 20200831-121649
+[LOG] 22 multisat sats version: 5042
+[WRN] 151 mmi retry #0
+[WRN] 264 mmi retry #1
+[WRN] 377 mmi retry #2
+[WRN] 490 mmi retry #3
+[WRN] 603 mmi retry #4
+[WRN] 716 mmi retry #5
+[WRN] 829 mmi retry #6
+[WRN] 942 mmi retry #7
+[WRN] 1055 mmi retry #8
+[WRN] 1168 mmi retry #9
+[ERR] 1180 mmi 0x12 comm error on r
+[LOG] 1183 multisat mmi device not present
+[LOG] 1187 Resume tuner
+[LOG] 1190 Init tuner I2C bus
+[LOG] 1293 Disable serit frontend 3V3 (PE1)
+[LOG] 1297 Disable serit frontend 1V0 (PE0)
+[LOG] 1401 Enable serit frontend 3V3 (PE1)
+[LOG] 1405 Enable serit frontend 1V0 (PE0)
+[LOG] 1713 stv0903 chip identification: 0x20
+[LOG] 1734 stv0903 clock: 136000000
+[LOG] 1745 NIT init
+[LOG] 2447 NIT reg 8000: 01
+[LOG] 2450 NIT reg 8001: 40
+[LOG] 2453 NIT reg 8002: 02
+[LOG] 2456 NIT reg 8003: 10
+[LOG] 2459 NIT reg 8004: 05
+[LOG] 2462 NIT reg 8005: 40
+[LOG] 2465 NIT reg 8006: 0b
+[LOG] 2468 NIT reg 8007: 00
+[LOG] 2471 NIT reg 8008: 00
+[LOG] 2473 NIT reg 8009: 01
+[LOG] 2476 NIT version 0x16
+[LOG] 2479 NIT id 0x4e
+[LOG] 2482 NIT acquisition stop
+[LOG] 2485 Enable LNB 1
+[LOG] 2507 config.sat=255
+[LOG] 2510 config.tun=0
+[LOG] 2512 config.dual1_2=0
+[LOG] 2515 config.orb_pos=-1
+[LOG] 2518 config.el_pos=1060
+[LOG] 2521 config.az_pos=0
+[LOG] 2523 config.man_el_pos=65535
+[LOG] 2527 config.man_az_pos=65535
+[LOG] 2530 config.lang=0
+[LOG] 2533 config.sat_choice=255
+[LOG] 2536 config.contrast=100
+[LOG] 2539 config.el_adj=0
+[LOG] 2542 config successfully loaded
+[LOG] 2546 Valid map found @0x07d000
+[LOG] 2549 task-alarms started
+mas> [LOG] 2553 DiseqC mode detected
+[LOG] 2556 Suspend motors
+[LOG] 2563 El motor autodetect: otw: 1; fault: 1
+[LOG] 2567 Driver motor M1 found
+[LOG] 2571 Motors off
+[LOG] 2773 Suspend tuner
+[LOG] 2885 Disable serit frontend 3V3 (PE1)
+[LOG] 2889 Disable serit frontend 1V0 (PE0)
+[LOG] 2893 Enable LNB 0
+

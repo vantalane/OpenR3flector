@@ -1,0 +1,53 @@
+
+As i'm afraid of the implications regarding redistributing datasheets, here is a list of datasheets I've got which contain relevant IC and module info.
+Search engines will likely give you the file if you search for it. 
+--------
+$ tree
+.
+├── 24AA256-24LC256-24FC256-256K-I2C-Serial-EEPROM-DS20001203.pdf
+├── 251202E_1A-Low-Voltage-Low-Quiescent-Current-LDO-Regulator-DS20001936E.pdf
+├── CD40109B.PDF
+├── CL257_sn74cbtlv3257.pdf
+├── drv8412.pdf
+├── fpga
+│   └── ug332.pdf
+├── IS602B_SC18IS602B.pdf
+├── lnbh29.pdf
+├── MX25V1006E, 2.5V, 1Mb, v1.5.pdf
+├── rbo08.pdf
+├── rf_related_refs
+│   ├── cq-tv248-1.pdf
+│   ├── FTS-260-Finetech.pdf
+│   ├── FTS-4334L_Series_F1.pdf
+│   ├── FTS-4335_Series_F2.pdf
+│   ├── loewe_dvb_s2_module
+│   ├── MT7-768x626.jpg
+│   ├── qfu2.1e_la_sxema (2).pdf
+│   ├── qfu2.1e_la_sxema.pdf
+│   ├── Serit_FTS4335V_Converter_Kit_MTK2_Instructions_v1-07_Parts_Build_A1_v1_Schematic_A1_v2_Silkscreen.zip
+│   ├── SP2237AVb.pdf
+│   ├── SP8220BHb.pdf
+│   ├── SP8221BHb.pdf
+│   ├── TechTalk123-DATV.pdf
+│   └── vergleichstabelle-geheimhaltungsgrade.pdf
+├── satenne_manuals
+│   ├── Disecq-instellingen-Satenne-TV-handleiding-V1-2021.pdf
+│   ├── Reset-DiSEqC-antenne.pdf
+│   ├── Satenne_R3_handleiding.pdf
+│   ├── Satenne-R3-korte-bedieninstructie.pdf
+│   ├── SATENNE_R3_leaflet_NL.pdf
+│   ├── Satenne_R3_nulstand.pdf
+│   ├── Satenne_R3_nulstand.pdf.1
+│   ├── Satenne-R3-Premium-Handleiding2020-2021.pdf
+│   └── snelstart-gids-Satenne-TV-1.pdf
+├── serit
+│   └── Sharp_Microelectronics-BS2F7HZ0169-datasheet.pdf
+├── sn74cbtlv3257.pdf
+├── stm32f411ce-2.pdf
+├── STV0903BAC.pdf
+├── STV0903.PDF
+├── stv6110a.pdf
+├── WPMDH1200601_171020601.pdf
+└── xilinx_xc3s50A_ds529.pdf
+
+5 directories, 41 files

@@ -1,0 +1,85 @@
+SP2636S
+	
+
+ST chip solution: STV610A+STV0903BAB
+	
+
+Support CCM
+	
+
+Vertical/horizontal
+
+
+the chinese sat frontend has this on it:
+ SP2637SHb S1943B-A
+also SERIT silk
+
+on PCBA silk 
+SP2636S_PV5.0
+SP2636S_PV5.0
+
+
+https://www.diytrade.com/china/pd/19229110/FULL_NIM_SP2636SHb_SP2636SVb.html
+ SP2636SHb SP2636SVb 
+ 
+	
+USES THESE INTERNALLY
+ST chip solution: STV610A+STV0903BAB
+	
+I2C communicated?
+
+Support CCM
+	
+
+Vertical/horizontal
+
+THIS DEVICE connects to the fpga with 9 impedance matched lines
+
+
+
+Online they say its based on the following two ST chips:
+
+STV610A
+8PSK/QPSK low-power 3.3 V satellite tuner IC
+
+STV0903BAB 
+"Multi-standard advanced demodulator
+for satellite digital TV and data services set-top boxes"
+
+
+chinese frontend thing has two resistors populated  out of four routed under it
+
+these are prolly I2C.
+
+R254 Goes to PB4 through a 100 ohm
+R255 goes to R61 then STM32 PA8
+
+R256 N.C
+R2 N.C.
+
+
+TAKEAWAYS FROM ST CHIP SOLUTION STV6110A+STV0903BAB
+
+STV6110A  is a 8psk/QPSK satellite tuner IC.
+can get 950 MHz to 2150 Mhz
+
+direct conversion (zero IF ?) receiver
+
+has input LNA,	
+	QP an QN diff out?
+	IN and IN diff out?
+
+	does it use IQ demodulation? with each component being a diff signal?
+
+	application diagram shows STV6110A and STV0903 with a LNBH23 in there for sat biasing
+	
+
+
+Mini tiouner  thing covers SERIT NIM's 
+https://wiki.batc.org.uk/Serit_tuner
+https://www.zr6tg.co.za/opentuner-minitiouner-source/
+http://www.serit.hk/en/
+https://www.amsat-on.be/hamtv-summary/minitiouner-hardware/
+
+the relay could be to supply voltage to the 1st F plug through 2nd F pulg.
+

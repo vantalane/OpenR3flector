@@ -1,0 +1,1607 @@
+help
+help
+	List CLI commands
+sat
+	Usage: sat [idx]	List MAS satellites config
+tune
+	Usage: tune sat_idx tun_idx	Tune on sat_idx/tun_idx
+i2cw
+	Usage: i2cw byte0 byte1 byte2... 	i2c write
+i2cr
+	Usage: i2cr count byte0 [byte1] ... 	i2c read
+mot
+	Usage: mot [21|22]cmd	Send cmd to motor
+open
+	Usage: open	Open dish
+close
+	Usage: close	Close dish
+search
+	Usage: search	Move dish for searching
+sys
+	Usage: sys suspend|resume	System commands
+mmi
+	Usage: mmi cmd	Send cmd to mmi
+diq
+	Usage: diq {start|stop}	diseqc detection start/stop
+mas> open
+[LOG] 121515 open task started force reset=0
+[LOG] 121519 el duty 95
+[LOG] 121522 az duty 95
+mas> [LOG] 121525 305 el ZERO!!
+[LOG] 121527 323 el ZERO!!
+[LOG] 121530 az duty 95
+[LOG] 121532 el duty 95
+[ERR] 122025 Trying goto without a previous zero reset
+[LOG] 122525 305 el ZERO!!
+[LOG] 122527 323 el ZERO!!
+[LOG] 122530 305 el ZERO!!
+[LOG] 123025 305 el ZERO!!
+[LOG] 123027 323 el ZERO!!
+[LOG] 123030 305 el ZERO!!
+[LOG] 123525 305 el ZERO!!
+[LOG] 123527 323 el ZERO!!
+[LOG] 123530 305 el ZERO!!
+[LOG] 124025 305 el ZERO!!
+[LOG] 124027 el cur=0 prev=2147483647
+[LOG] 124525 305 el ZERO!!
+[LOG] 124527 323 el ZERO!!
+[LOG] 124530 305 el ZERO!!
+[LOG] 125025 305 el ZERO!!
+[LOG] 125027 323 el ZERO!!
+[LOG] 125030 305 el ZERO!!
+[LOG] 125525 305 el ZERO!!
+[LOG] 125527 323 el ZERO!!
+[LOG] 125530 305 el ZERO!!
+[LOG] 126025 305 el ZERO!!
+[LOG] 126027 el cur=0 prev=0
+[ERR] 126030 alarm set 00000004 flags 00000004
+[LOG] 126035 Suspend motors
+[LOG] 126037 Motors off
+[LOG] 126240 Suspend tuner
+[LOG] 126352 Disable serit frontend 3V3 (PE1)
+[LOG] 126356 Disable serit frontend 1V0 (PE0)
+[LOG] 126360 Enable LNB 0
+[LOG] 126363 Suspend motors
+[LOG] 126366 Motors off
+[LOG] 126568 Suspend tuner
+[LOG] 126680 Disable serit frontend 3V3 (PE1)
+[LOG] 126684 Disable serit frontend 1V0 (PE0)
+[LOG] 126688 Enable LNB 0
+[LOG] 126691 Alarm EL_BLOCK, stop btn or mmi task
+[LOG] 131363 escape btn pressed
+[LOG] 131418 Restart btn task
+[LOG] 131421 alarm clr ffffffff flags 00000000
+[LOG] 131425 DiseqC mode detected
+[LOG] 131428 Suspend motors
+[LOG] 131431 Motors off
+[LOG] 131634 Suspend tuner
+[LOG] 131746 Disable serit frontend 3V3 (PE1)
+[LOG] 131750 Disable serit frontend 1V0 (PE0)
+[LOG] 131754 Enable LNB 0
+[LOG] 137557 mono btn pressed
+[LOG] 137611 Resume motors
+[LOG] 137613 Motors on
+[LOG] 137616 179 el ZERO!!
+[LOG] 137618 179 az ZERO!!
+[LOG] 137621 open task started force reset=0
+[LOG] 137625 el duty 95
+[LOG] 137628 az duty 95
+[LOG] 137632 305 el ZERO!!
+[LOG] 137634 323 el ZERO!!
+[LOG] 137637 az duty 95
+[LOG] 137639 el duty 95
+[LOG] 138132 el duty 95
+[LOG] 140132 el cur=231 prev=2147483647
+[LOG] 142132 el cur=475 prev=231
+[LOG] 144132 el cur=733 prev=475
+[LOG] 146132 el cur=1009 prev=733
+[LOG] 148132 el cur=1303 prev=1009
+[LOG] 149232 open task done
+close
+[LOG] 184034 close task started
+[LOG] 184037 el duty 95
+[LOG] 184039 az duty 95
+mas> [LOG] 184642 248 az ZERO!!
+[LOG] 184644 close waiting for 0x00
+[LOG] 184648 305 az ZERO!!
+[LOG] 184650 323 az ZERO!!
+[LOG] 184653 305 az ZERO!!
+[LOG] 185148 el duty 5
+[LOG] 195037 el duty 28
+[LOG] 195285 83 el ZERO!!
+[LOG] 195288 305 el ZERO!!
+[LOG] 195788 305 el ZERO!!
+[LOG] 195790 323 el ZERO!!
+[LOG] 195893 close task done
+LOG] 8 Hello from MAS2 bootloader
+[LOG] 11 bootloader git version: db8e328
+[LOG] 15 bootloader compile date: 20200831-121645
+[LOG] 20 Valid map found @0x07d000
+[LOG] 23 sats: 0x8000
+[LOG] 25 lang: 0xc000
+[LOG] 28 fw:   0x010000
+[LOG] 30 fw version:   5042
+[LOG] 33 sats version: 5042
+[LOG] 48 Pin C7: 0
+[LOG] 49 SD card not present
+[ERR] 1074 cmd 1 failed
+[LOG] 1076 About to launch main app @0x010000
+
+
+[LOG] 8 Hello from MAS2 multisat
+[LOG] 11 multisat version: 5042
+[LOG] 14 multisat git version: db8e328
+[LOG] 18 multisat compile date: 20200831-121649
+[LOG] 22 multisat sats version: 5042
+[WRN] 151 mmi retry #0
+[WRN] 264 mmi retry #1
+[WRN] 377 mmi retry #2
+[WRN] 490 mmi retry #3
+[WRN] 603 mmi retry #4
+[WRN] 716 mmi retry #5
+[WRN] 829 mmi retry #6
+[WRN] 942 mmi retry #7
+[WRN] 1055 mmi retry #8
+[WRN] 1168 mmi retry #9
+[ERR] 1180 mmi 0x12 comm error on r
+[LOG] 1183 multisat mmi device not present
+[LOG] 1187 Resume tuner
+[LOG] 1190 Init tuner I2C bus
+[LOG] 1293 Disable serit frontend 3V3 (PE1)
+[LOG] 1297 Disable serit frontend 1V0 (PE0)
+[LOG] 1401 Enable serit frontend 3V3 (PE1)
+[LOG] 1405 Enable serit frontend 1V0 (PE0)
+[LOG] 1713 stv0903 chip identification: 0x20
+[LOG] 1734 stv0903 clock: 136000000
+[LOG] 1745 NIT init
+[LOG] 2447 NIT reg 8000: 01
+[LOG] 2450 NIT reg 8001: 40
+[LOG] 2453 NIT reg 8002: 02
+[LOG] 2456 NIT reg 8003: 10
+[LOG] 2459 NIT reg 8004: 05
+[LOG] 2462 NIT reg 8005: 40
+[LOG] 2465 NIT reg 8006: 0b
+[LOG] 2468 NIT reg 8007: 00
+[LOG] 2471 NIT reg 8008: 00
+[LOG] 2473 NIT reg 8009: 01
+[LOG] 2476 NIT version 0x16
+[LOG] 2479 NIT id 0x4e
+[LOG] 2482 NIT acquisition stop
+[LOG] 2485 Enable LNB 1
+[LOG] 2507 config.sat=255
+[LOG] 2510 config.tun=0
+[LOG] 2512 config.dual1_2=0
+[LOG] 2515 config.orb_pos=-1
+[LOG] 2518 config.el_pos=1060
+[LOG] 2521 config.az_pos=0
+[LOG] 2523 config.man_el_pos=65535
+[LOG] 2527 config.man_az_pos=65535
+[LOG] 2530 config.lang=0
+[LOG] 2533 config.sat_choice=255
+[LOG] 2536 config.contrast=100
+[LOG] 2539 config.el_adj=0
+[LOG] 2542 config successfully loaded
+[LOG] 2546 Valid map found @0x07d000
+[LOG] 2549 task-alarms started
+mas> [LOG] 2553 DiseqC mode detected
+[LOG] 2556 Suspend motors
+[LOG] 2563 El motor autodetect: otw: 1; fault: 1
+[LOG] 2567 Driver motor M1 found
+[LOG] 2571 Motors off
+[LOG] 2773 Suspend tuner
+[LOG] 2885 Disable serit frontend 3V3 (PE1)
+[LOG] 2889 Disable serit frontend 1V0 (PE0)
+[LOG] 2893 Enable LNB 0
+LOG] 8 Hello from MAS2 bootloader
+[LOG] 11 bootloader git version: db8e328
+[LOG] 15 bootloader compile date: 20200831-121645
+[LOG] 20 Valid map found @0x07d000
+[LOG] 23 sats: 0x8000
+[LOG] 25 lang: 0xc000
+[LOG] 28 fw:   0x010000
+[LOG] 30 fw version:   5042
+[LOG] 33 sats version: 5042
+[LOG] 48 Pin C7: 0
+[LOG] 49 SD card not present
+[ERR] 1074 cmd 1 failed
+[LOG] 1076 About to launch main app @0x010000
+
+
+[LOG] 8 Hello from MAS2 multisat
+[LOG] 11 multisat version: 5042
+[LOG] 14 multisat git version: db8e328
+[LOG] 18 multisat compile date: 20200831-121649
+[LOG] 22 multisat sats version: 5042
+[WRN] 151 mmi retry #0
+[WRN] 264 mmi retry #1
+[WRN] 377 mmi retry #2
+[WRN] 490 mmi retry #3
+[WRN] 603 mmi retry #4
+[WRN] 716 mmi retry #5
+[WRN] 829 mmi retry #6
+[WRN] 942 mmi retry #7
+[WRN] 1055 mmi retry #8
+[WRN] 1168 mmi retry #9
+[ERR] 1180 mmi 0x12 comm error on r
+[LOG] 1183 multisat mmi device not present
+[LOG] 1187 Resume tuner
+[LOG] 1190 Init tuner I2C bus
+[LOG] 1293 Disable serit frontend 3V3 (PE1)
+[LOG] 1297 Disable serit frontend 1V0 (PE0)
+[LOG] 1401 Enable serit frontend 3V3 (PE1)
+[LOG] 1405 Enable serit frontend 1V0 (PE0)
+[LOG] 1713 stv0903 chip identification: 0x20
+[LOG] 1734 stv0903 clock: 136000000
+[LOG] 1745 NIT init
+[LOG] 2447 NIT reg 8000: 01
+[LOG] 2450 NIT reg 8001: 40
+[LOG] 2453 NIT reg 8002: 02
+[LOG] 2456 NIT reg 8003: 10
+[LOG] 2459 NIT reg 8004: 05
+[LOG] 2462 NIT reg 8005: 40
+[LOG] 2465 NIT reg 8006: 0b
+[LOG] 2468 NIT reg 8007: 00
+[LOG] 2471 NIT reg 8008: 00
+[LOG] 2473 NIT reg 8009: 01
+[LOG] 2476 NIT version 0x16
+[LOG] 2479 NIT id 0x4e
+[LOG] 2482 NIT acquisition stop
+[LOG] 2485 Enable LNB 1
+[LOG] 2507 config.sat=255
+[LOG] 2510 config.tun=0
+[LOG] 2512 config.dual1_2=0
+[LOG] 2515 config.orb_pos=-1
+[LOG] 2518 config.el_pos=1060
+[LOG] 2521 config.az_pos=0
+[LOG] 2523 config.man_el_pos=65535
+[LOG] 2527 config.man_az_pos=65535
+[LOG] 2530 config.lang=0
+[LOG] 2533 config.sat_choice=255
+[LOG] 2536 config.contrast=100
+[LOG] 2539 config.el_adj=0
+[LOG] 2542 config successfully loaded
+[LOG] 2546 Valid map found @0x07d000
+[LOG] 2549 task-alarms started
+mas> [LOG] 2553 DiseqC mode detected
+[LOG] 2556 Suspend motors
+[LOG] 2563 El motor autodetect: otw: 1; fault: 1
+[LOG] 2567 Driver motor M1 found
+[LOG] 2571 Motors off
+[LOG] 2773 Suspend tuner
+[LOG] 2885 Disable serit frontend 3V3 (PE1)
+[LOG] 2889 Disable serit frontend 1V0 (PE0)
+[LOG] 2893 Enable LNB 0
+[LOG] 5715 mono btn pressed
+[LOG] 5769 Resume motors
+[LOG] 5771 Motors on
+[LOG] 5773 179 el ZERO!!
+[LOG] 5776 179 az ZERO!!
+[LOG] 5778 open task started force reset=0
+[LOG] 5782 el duty 95
+[LOG] 5785 az duty 95
+[LOG] 5789 305 el ZERO!!
+[LOG] 5791 323 el ZERO!!
+[LOG] 5794 az duty 95
+[LOG] 5796 el duty 95
+[LOG] 6289 el duty 95
+[LOG] 8289 el cur=233 prev=2147483647
+[LOG] 10289 el cur=477 prev=233
+[LOG] 12289 el cur=737 prev=477
+[LOG] 14289 el cur=1014 prev=737
+[LOG] 16289 el cur=1309 prev=1014
+[LOG] 17389 open task done
+help
+help
+	List CLI commands
+sat
+	Usage: sat [idx]	List MAS satellites config
+tune
+	Usage: tune sat_idx tun_idx	Tune on sat_idx/tun_idx
+i2cw
+	Usage: i2cw byte0 byte1 byte2... 	i2c write
+i2cr
+	Usage: i2cr count byte0 [byte1] ... 	i2c read
+mot
+	Usage: mot [21|22]cmd	Send cmd to motor
+open
+	Usage: open	Open dish
+close
+	Usage: close	Close dish
+search
+	Usage: search	Move dish for searching
+sys
+	Usage: sys suspend|resume	System commands
+mmi
+	Usage: mmi cmd	Send cmd to mmi
+diq
+	Usage: diq {start|stop}	diseqc detection start/stop
+mas> search
+[LOG] 27491 search task started
+[LOG] 27494 el duty 95
+[LOG] 27496 az duty 83
+[LOG] 27499 cur sat flag 0001
+[LOG] 27502 searching ASTRA 3 23.5E (3)
+mas> [LOG] 27506 248 az ZERO!!
+[LOG] 27509 Resume tuner
+[LOG] 27511 Init tuner I2C bus
+[LOG] 27614 Disable serit frontend 3V3 (PE1)
+[LOG] 27618 Disable serit frontend 1V0 (PE0)
+[LOG] 27722 Enable serit frontend 3V3 (PE1)
+[LOG] 27726 Enable serit frontend 1V0 (PE0)
+[LOG] 28034 stv0903 chip identification: 0x20
+[LOG] 28055 stv0903 clock: 136000000
+[LOG] 28067 NIT init
+[LOG] 28769 NIT reg 8000: 01
+[LOG] 28772 NIT reg 8001: 40
+[LOG] 28775 NIT reg 8002: 02
+[LOG] 28778 NIT reg 8003: 10
+[LOG] 28781 NIT reg 8004: 05
+[LOG] 28784 NIT reg 8005: 40
+[LOG] 28787 NIT reg 8006: 0b
+[LOG] 28790 NIT reg 8007: 00
+[LOG] 28793 NIT reg 8008: 00
+[LOG] 28796 NIT reg 8009: 01
+[LOG] 28799 NIT version 0x16
+[LOG] 28802 NIT id 0x4e
+[LOG] 28805 NIT acquisition stop
+[LOG] 28808 Enable LNB 1
+[LOG] 28841 305 az ZERO!!
+[LOG] 28843 323 az ZERO!!
+[LOG] 28859 sat ASTRA 3 23.5E tun 0 ok
+[LOG] 29341 305 az ZERO!!
+[LOG] 29343 323 az ZERO!!
+[LOG] 29346 new elevation 10*deg: 1060
+[LOG] 29841 305 az ZERO!!
+[LOG] 29843 323 az ZERO!!
+[LOG] 29846 az duty 83
+[LOG] 31341 az cur=149 prev=2147483647
+[WRN] 31344 Hall dly 14
+[LOG] 33341 az cur=355 prev=149
+[WRN] 33344 Hall dly 13
+[LOG] 35341 az cur=563 prev=355
+[WRN] 35344 Hall dly 14
+[LOG] 37341 az cur=772 prev=563
+[WRN] 37344 Hall dly 13
+[LOG] 39341 az cur=981 prev=772
+[WRN] 39344 Hall dly 13
+[LOG] 41341 az cur=1189 prev=981
+[WRN] 41344 Hall dly 13
+[LOG] 43341 az cur=1398 prev=1189
+[WRN] 43344 Hall dly 14
+[LOG] 45341 az cur=1605 prev=1398
+[WRN] 45344 Hall dly 14
+[LOG] 47341 az cur=1812 prev=1605
+[WRN] 47344 Hall dly 14
+[LOG] 49341 az cur=2019 prev=1812
+[WRN] 49344 Hall dly 14
+[LOG] 51341 az cur=2229 prev=2019
+[WRN] 51344 Hall dly 14
+[LOG] 53341 az cur=2438 prev=2229
+[WRN] 53344 Hall dly 14
+[LOG] 54941 new elevation 10*deg: 1040
+[LOG] 54944 el duty 5
+[LOG] 55441 az duty 17
+[LOG] 56841 az cur=2435 prev=2147483647
+[WRN] 56844 Hall dly 14
+[LOG] 58841 az cur=2221 prev=2435
+[WRN] 58844 Hall dly 13
+[LOG] 60841 az cur=2007 prev=2221
+[WRN] 60844 Hall dly 13
+[LOG] 62841 az cur=1793 prev=2007
+[WRN] 62844 Hall dly 14
+[LOG] 64841 az cur=1578 prev=1793
+[WRN] 64844 Hall dly 13
+[LOG] 66841 az cur=1363 prev=1578
+[WRN] 66844 Hall dly 13
+[LOG] 68841 az cur=1149 prev=1363
+[WRN] 68844 Hall dly 13
+[LOG] 70841 az cur=934 prev=1149
+[WRN] 70844 Hall dly 13
+[LOG] 72841 az cur=721 prev=934
+[WRN] 72844 Hall dly 13
+[LOG] 74841 az cur=509 prev=721
+[WRN] 74844 Hall dly 13
+[LOG] 76841 az cur=297 prev=509
+[WRN] 76844 Hall dly 13
+[LOG] 78841 az cur=84 prev=297
+[WRN] 78844 Hall dly 14
+[LOG] 79563 az duty 32
+[LOG] 79805 83 az ZERO!!
+[LOG] 79841 305 az ZERO!!
+[LOG] 79843 323 az ZERO!!
+[LOG] 79946 new elevation 10*deg: 1080
+[LOG] 79949 el duty 95
+[LOG] 80841 305 az ZERO!!
+[LOG] 80843 323 az ZERO!!
+[LOG] 80946 az duty 83
+[LOG] 82341 az cur=146 prev=2147483647
+[WRN] 82344 Hall dly 14
+[LOG] 84341 az cur=360 prev=146
+[WRN] 84344 Hall dly 13
+[LOG] 86341 az cur=574 prev=360
+[WRN] 86344 Hall dly 13
+[LOG] 88341 az cur=788 prev=574
+[WRN] 88344 Hall dly 14
+[LOG] 90341 az cur=1002 prev=788
+[WRN] 90344 Hall dly 13
+[LOG] 92341 az cur=1214 prev=1002
+[WRN] 92344 Hall dly 13
+[LOG] 94341 az cur=1425 prev=1214
+[WRN] 94344 Hall dly 14
+[LOG] 96341 az cur=1633 prev=1425
+[WRN] 96344 Hall dly 14
+[LOG] 98341 az cur=1842 prev=1633
+[WRN] 98344 Hall dly 14
+[LOG] 100341 az cur=2050 prev=1842
+[WRN] 100344 Hall dly 14
+[LOG] 102341 az cur=2260 prev=2050
+[WRN] 102344 Hall dly 13
+[LOG] 104341 az cur=2470 prev=2260
+[WRN] 104344 Hall dly 14
+[LOG] 105941 new elevation 10*deg: 1020
+[LOG] 105944 el duty 5
+[LOG] 106941 az duty 17
+[LOG] 108341 az cur=2433 prev=2147483647
+[WRN] 108345 Hall dly 14
+[LOG] 110341 az cur=2219 prev=2433
+[WRN] 110344 Hall dly 14
+[LOG] 112341 az cur=2003 prev=2219
+[WRN] 112344 Hall dly 13
+[LOG] 114341 az cur=1788 prev=2003
+[WRN] 114344 Hall dly 13
+[LOG] 116341 az cur=1573 prev=1788
+[WRN] 116344 Hall dly 14
+[LOG] 118341 az cur=1356 prev=1573
+[WRN] 118344 Hall dly 13
+[LOG] 120341 az cur=1141 prev=1356
+[WRN] 120344 Hall dly 13
+[LOG] 122341 az cur=925 prev=1141
+[WRN] 122344 Hall dly 13
+[LOG] 124341 az cur=710 prev=925
+[WRN] 124344 Hall dly 13
+[LOG] 126341 az cur=497 prev=710
+[WRN] 126344 Hall dly 13
+[LOG] 128341 az cur=284 prev=497
+[WRN] 128344 Hall dly 13
+[LOG] 130341 az cur=71 prev=284
+[WRN] 130344 Hall dly 13
+[LOG] 130935 az duty 32
+[LOG] 131180 83 az ZERO!!
+[LOG] 131341 305 az ZERO!!
+[LOG] 131343 323 az ZERO!!
+[LOG] 131446 new elevation 10*deg: 1100
+[LOG] 131449 el duty 95
+[LOG] 132341 305 az ZERO!!
+[LOG] 132343 323 az ZERO!!
+[LOG] 132446 az duty 83
+[LOG] 133841 az cur=145 prev=2147483647
+[WRN] 133844 Hall dly 14
+[LOG] 135841 az cur=360 prev=145
+[WRN] 135844 Hall dly 14
+[LOG] 137841 az cur=575 prev=360
+[WRN] 137844 Hall dly 13
+[LOG] 139841 az cur=793 prev=575
+[WRN] 139844 Hall dly 14
+[LOG] 141841 az cur=1009 prev=793
+[WRN] 141844 Hall dly 13
+[LOG] 143841 az cur=1223 prev=1009
+[WRN] 143844 Hall dly 13
+[LOG] 145841 az cur=1435 prev=1223
+[WRN] 145844 Hall dly 13
+[LOG] 147841 az cur=1645 prev=1435
+[WRN] 147844 Hall dly 14
+[LOG] 149841 az cur=1855 prev=1645
+[WRN] 149844 Hall dly 13
+[LOG] 151841 az cur=2067 prev=1855
+[WRN] 151844 Hall dly 13
+[LOG] 153841 az cur=2278 prev=2067
+[WRN] 153844 Hall dly 14
+[LOG] 155841 az cur=2491 prev=2278
+[WRN] 155844 Hall dly 13
+[LOG] 156941 new elevation 10*deg: 1000
+[LOG] 156944 el duty 5
+[LOG] 158441 az duty 17
+[LOG] 159841 az cur=2432 prev=2147483647
+[WRN] 159845 Hall dly 14
+[LOG] 161841 az cur=2218 prev=2432
+[WRN] 161844 Hall dly 14
+[LOG] 163841 az cur=2004 prev=2218
+[WRN] 163844 Hall dly 13
+[LOG] 165841 az cur=1790 prev=2004
+[WRN] 165844 Hall dly 13
+[LOG] 167841 az cur=1576 prev=1790
+[WRN] 167844 Hall dly 14
+[LOG] 169824 Sat found! Now checking all frequencies
+[LOG] 169830 el=0x0555 (1365), az=0x0555 (1365)
+[LOG] 169835 freq 0 check start
+[LOG] 169941 invalid modcod: found 14
+[LOG] 169945 freq 0 invalid
+[LOG] 169948 freq 1 check start
+[LOG] 170482 freq 1 invalid
+[LOG] 170484 freq 2 check start
+[LOG] 170618 invalid modcod: found 14
+[LOG] 170622 freq 2 invalid
+[LOG] 170627 failed to set at least 2 freq, search restart
+[LOG] 170654 az duty 17
+[LOG] 170812 Sat found! Now checking all frequencies
+[LOG] 170819 el=0x0555 (1365), az=0x054d (1357)
+[LOG] 170824 freq 0 check start
+[LOG] 171330 freq 0 invalid
+[LOG] 171332 freq 1 check start
+[LOG] 171866 freq 1 invalid
+[LOG] 171868 freq 2 check start
+[LOG] 172402 freq 2 invalid
+[LOG] 172406 failed to set at least 2 freq, search restart
+[LOG] 172433 az duty 17
+[LOG] 173933 az cur=1199 prev=2147483647
+[WRN] 173937 Hall dly 14
+[LOG] 175933 az cur=984 prev=1199
+[WRN] 175936 Hall dly 13
+[LOG] 177933 az cur=770 prev=984
+[WRN] 177936 Hall dly 14
+[LOG] 179933 az cur=555 prev=770
+[WRN] 179936 Hall dly 13
+[LOG] 181933 az cur=342 prev=555
+[WRN] 181936 Hall dly 14
+[LOG] 183933 az cur=130 prev=342
+[WRN] 183936 Hall dly 14
+[LOG] 185079 az duty 32
+[LOG] 185255 83 az ZERO!!
+[LOG] 185433 305 az ZERO!!
+[LOG] 185435 323 az ZERO!!
+[LOG] 185538 new elevation 10*deg: 1120
+[LOG] 185541 el duty 95
+[LOG] 186933 305 az ZERO!!
+[LOG] 186935 323 az ZERO!!
+[LOG] 187038 az duty 83
+[LOG] 188433 az cur=146 prev=2147483647
+[WRN] 188436 Hall dly 15
+[LOG] 190433 az cur=361 prev=146
+[WRN] 190436 Hall dly 13
+[LOG] 192433 az cur=575 prev=361
+[WRN] 192436 Hall dly 13
+[LOG] 194433 az cur=789 prev=575
+[WRN] 194436 Hall dly 13
+[LOG] 196433 az cur=1003 prev=789
+[WRN] 196436 Hall dly 13
+[LOG] 198433 az cur=1216 prev=1003
+[WRN] 198436 Hall dly 13
+[LOG] 200433 az cur=1428 prev=1216
+[WRN] 200436 Hall dly 14
+[LOG] 202433 az cur=1638 prev=1428
+[WRN] 202436 Hall dly 14
+[LOG] 204433 az cur=1848 prev=1638
+[WRN] 204436 Hall dly 14
+[LOG] 206433 az cur=2058 prev=1848
+[WRN] 206436 Hall dly 13
+[LOG] 208433 az cur=2268 prev=2058
+[WRN] 208436 Hall dly 14
+[LOG] 210433 az cur=2481 prev=2268
+[WRN] 210436 Hall dly 13
+[LOG] 211533 new elevation 10*deg: 980
+[LOG] 211536 el duty 5
+[LOG] 213120 az duty 17
+[LOG] 214520 az cur=2432 prev=2147483647
+[WRN] 214524 Hall dly 15
+[LOG] 216520 az cur=2216 prev=2432
+[WRN] 216523 Hall dly 13
+[LOG] 218520 az cur=1999 prev=2216
+[WRN] 218523 Hall dly 13
+[LOG] 220520 az cur=1784 prev=1999
+[WRN] 220523 Hall dly 14
+[LOG] 222520 az cur=1568 prev=1784
+[WRN] 222523 Hall dly 13
+[LOG] 224351 Sat found! Now checking all frequencies
+[LOG] 224357 el=0x0539 (1337), az=0x055d (1373)
+[LOG] 224362 freq 0 check start
+[LOG] 224468 invalid modcod: found 14
+[LOG] 224472 freq 0 invalid
+[LOG] 224475 freq 1 check start
+[LOG] 225009 freq 1 invalid
+[LOG] 225011 freq 2 check start
+[LOG] 225145 invalid modcod: found 14
+[LOG] 225149 freq 2 invalid
+[LOG] 225154 failed to set at least 2 freq, search restart
+[LOG] 225181 az duty 17
+[LOG] 225339 Sat found! Now checking all frequencies
+[LOG] 225346 el=0x0539 (1337), az=0x0555 (1365)
+[LOG] 225351 freq 0 check start
+[LOG] 225457 invalid modcod: found 14
+[LOG] 225461 freq 0 invalid
+[LOG] 225464 freq 1 check start
+[LOG] 225998 freq 1 invalid
+[LOG] 226000 freq 2 check start
+[LOG] 226134 invalid modcod: found 14
+[LOG] 226138 freq 2 invalid
+[LOG] 226143 failed to set at least 2 freq, search restart
+[LOG] 226170 az duty 17
+[LOG] 226328 Sat found! Now checking all frequencies
+[LOG] 226335 el=0x0539 (1337), az=0x054d (1357)
+[LOG] 226340 freq 0 check start
+[LOG] 226446 invalid modcod: found 14
+[LOG] 226450 freq 0 invalid
+[LOG] 226453 freq 1 check start
+[LOG] 226987 freq 1 invalid
+[LOG] 226989 freq 2 check start
+[LOG] 227523 freq 2 invalid
+[LOG] 227527 failed to set at least 2 freq, search restart
+[LOG] 227554 az duty 17
+[LOG] 229054 az cur=1200 prev=2147483647
+[WRN] 229058 Hall dly 14
+[LOG] 231054 az cur=984 prev=1200
+[WRN] 231057 Hall dly 14
+[LOG] 233054 az cur=770 prev=984
+[WRN] 233057 Hall dly 13
+[LOG] 235054 az cur=556 prev=770
+[WRN] 235057 Hall dly 14
+[LOG] 237054 az cur=344 prev=556
+[WRN] 237057 Hall dly 13
+[LOG] 239054 az cur=131 prev=344
+[WRN] 239057 Hall dly 14
+[LOG] 240209 az duty 32
+[LOG] 240389 83 az ZERO!!
+[LOG] 240554 305 az ZERO!!
+[LOG] 240556 323 az ZERO!!
+[LOG] 240659 new elevation 10*deg: 1140
+[LOG] 240662 el duty 95
+[LOG] 242554 305 az ZERO!!
+[LOG] 242556 323 az ZERO!!
+[LOG] 242659 az duty 83
+[LOG] 244054 az cur=145 prev=2147483647
+[WRN] 244057 Hall dly 15
+[LOG] 246054 az cur=361 prev=145
+[WRN] 246057 Hall dly 13
+[LOG] 248054 az cur=577 prev=361
+[WRN] 248057 Hall dly 13
+[LOG] 250054 az cur=794 prev=577
+[WRN] 250057 Hall dly 14
+[LOG] 252054 az cur=1010 prev=794
+[WRN] 252057 Hall dly 13
+[LOG] 254054 az cur=1223 prev=1010
+[WRN] 254057 Hall dly 14
+[LOG] 256054 az cur=1436 prev=1223
+[WRN] 256057 Hall dly 14
+[LOG] 258054 az cur=1647 prev=1436
+[WRN] 258057 Hall dly 13
+[LOG] 260054 az cur=1859 prev=1647
+[WRN] 260057 Hall dly 14
+[LOG] 262054 az cur=2070 prev=1859
+[WRN] 262057 Hall dly 14
+[LOG] 264054 az cur=2282 prev=2070
+[WRN] 264057 Hall dly 13
+[LOG] 266054 az cur=2497 prev=2282
+[WRN] 266057 Hall dly 13
+[LOG] 267154 new elevation 10*deg: 960
+[LOG] 267157 el duty 5
+[LOG] 269154 az duty 17
+[LOG] 270554 az cur=2432 prev=2147483647
+[WRN] 270558 Hall dly 14
+[LOG] 272554 az cur=2214 prev=2432
+[WRN] 272557 Hall dly 13
+[LOG] 274554 az cur=1997 prev=2214
+[WRN] 274557 Hall dly 14
+[LOG] 276554 az cur=1780 prev=1997
+[WRN] 276557 Hall dly 13
+[LOG] 278554 az cur=1563 prev=1780
+[WRN] 278557 Hall dly 13
+[LOG] 280396 Sat found! Now checking all frequencies
+[LOG] 280403 el=0x051e (1310), az=0x0556 (1366)
+[LOG] 280407 freq 0 check start
+[LOG] 280514 invalid modcod: found 14
+[LOG] 280518 freq 0 invalid
+[LOG] 280521 freq 1 check start
+[LOG] 281055 freq 1 invalid
+[LOG] 281057 freq 2 check start
+[LOG] 281191 invalid modcod: found 14
+[LOG] 281195 freq 2 invalid
+[LOG] 281200 failed to set at least 2 freq, search restart
+[LOG] 281227 az duty 17
+[LOG] 281385 Sat found! Now checking all frequencies
+[LOG] 281392 el=0x051e (1310), az=0x054d (1357)
+[LOG] 281397 freq 0 check start
+[LOG] 281903 freq 0 invalid
+[LOG] 281905 freq 1 check start
+[LOG] 282439 freq 1 invalid
+[LOG] 282441 freq 2 check start
+[LOG] 282975 freq 2 invalid
+[LOG] 282979 failed to set at least 2 freq, search restart
+[LOG] 283006 az duty 17
+[LOG] 284506 az cur=1198 prev=2147483647
+[WRN] 284510 Hall dly 15
+[LOG] 286506 az cur=983 prev=1198
+[WRN] 286509 Hall dly 13
+[LOG] 288506 az cur=769 prev=983
+[WRN] 288509 Hall dly 14
+[LOG] 290506 az cur=556 prev=769
+[WRN] 290509 Hall dly 13
+[LOG] 292506 az cur=342 prev=556
+[WRN] 292509 Hall dly 13
+[LOG] 294506 az cur=128 prev=342
+[WRN] 294509 Hall dly 14
+[LOG] 295638 az duty 32
+[LOG] 295859 83 az ZERO!!
+[LOG] 296006 305 az ZERO!!
+[LOG] 296008 323 az ZERO!!
+[LOG] 296111 new elevation 10*deg: 1160
+[LOG] 296114 el duty 95
+[LOG] 298086 305 az ZERO!!
+[LOG] 298088 323 az ZERO!!
+[LOG] 298191 az duty 83
+[LOG] 299586 az cur=145 prev=2147483647
+[WRN] 299589 Hall dly 14
+[LOG] 301586 az cur=361 prev=145
+[WRN] 301589 Hall dly 14
+[LOG] 303586 az cur=576 prev=361
+[WRN] 303589 Hall dly 14
+[LOG] 305586 az cur=791 prev=576
+[WRN] 305589 Hall dly 13
+[LOG] 307586 az cur=1007 prev=791
+[WRN] 307589 Hall dly 13
+[LOG] 309586 az cur=1220 prev=1007
+[WRN] 309589 Hall dly 13
+[LOG] 311586 az cur=1432 prev=1220
+[WRN] 311589 Hall dly 13
+[LOG] 313586 az cur=1641 prev=1432
+[WRN] 313589 Hall dly 14
+[LOG] 315586 az cur=1852 prev=1641
+[WRN] 315589 Hall dly 14
+[LOG] 317586 az cur=2063 prev=1852
+[WRN] 317589 Hall dly 13
+[LOG] 319586 az cur=2274 prev=2063
+[WRN] 319589 Hall dly 14
+[LOG] 321586 az cur=2488 prev=2274
+[WRN] 321589 Hall dly 14
+[LOG] 322686 new elevation 10*deg: 940
+[LOG] 322689 el duty 5
+[LOG] 324586 el cur=1324 prev=2147483647
+[WRN] 324590 Hall dly 14
+[LOG] 325186 az duty 17
+[LOG] 326586 az cur=2432 prev=2147483647
+[WRN] 326590 Hall dly 15
+[LOG] 328586 az cur=2216 prev=2432
+[WRN] 328589 Hall dly 14
+[LOG] 330586 az cur=1999 prev=2216
+[WRN] 330589 Hall dly 13
+[LOG] 332586 az cur=1783 prev=1999
+[WRN] 332589 Hall dly 14
+[LOG] 334586 az cur=1567 prev=1783
+[WRN] 334589 Hall dly 13
+[LOG] 336586 az cur=1350 prev=1567
+[WRN] 336589 Hall dly 13
+[LOG] 338586 az cur=1135 prev=1350
+[WRN] 338589 Hall dly 13
+[LOG] 340586 az cur=920 prev=1135
+[WRN] 340589 Hall dly 13
+[LOG] 342586 az cur=705 prev=920
+[WRN] 342589 Hall dly 14
+[LOG] 344586 az cur=493 prev=705
+[WRN] 344589 Hall dly 14
+[LOG] 346586 az cur=280 prev=493
+[WRN] 346589 Hall dly 13
+[LOG] 348586 az cur=68 prev=280
+[WRN] 348589 Hall dly 14
+[LOG] 349159 az duty 32
+[LOG] 349422 83 az ZERO!!
+[LOG] 349586 305 az ZERO!!
+[LOG] 349588 323 az ZERO!!
+[LOG] 349691 new elevation 10*deg: 1180
+[LOG] 349694 el duty 95
+[LOG] 351586 el cur=1566 prev=2147483647
+[WRN] 351590 Hall dly 15
+[LOG] 352086 305 az ZERO!!
+[LOG] 352088 323 az ZERO!!
+[LOG] 352191 az duty 83
+[LOG] 353586 az cur=145 prev=2147483647
+[WRN] 353589 Hall dly 15
+[LOG] 355586 az cur=361 prev=145
+[WRN] 355589 Hall dly 14
+[LOG] 357586 az cur=577 prev=361
+[WRN] 357589 Hall dly 14
+[LOG] 359586 az cur=793 prev=577
+[WRN] 359589 Hall dly 14
+[LOG] 361586 az cur=1007 prev=793
+[WRN] 361589 Hall dly 14
+[LOG] 363586 az cur=1221 prev=1007
+[WRN] 363589 Hall dly 13
+[LOG] 365586 az cur=1433 prev=1221
+[WRN] 365589 Hall dly 13
+[LOG] 367586 az cur=1645 prev=1433
+[WRN] 367589 Hall dly 14
+[LOG] 369586 az cur=1855 prev=1645
+[WRN] 369589 Hall dly 13
+[LOG] 371586 az cur=2066 prev=1855
+[WRN] 371589 Hall dly 14
+[LOG] 373586 az cur=2279 prev=2066
+[WRN] 373589 Hall dly 13
+[LOG] 375586 az cur=2493 prev=2279
+[WRN] 375589 Hall dly 13
+[LOG] 376686 new elevation 10*deg: 920
+[LOG] 376689 el duty 5
+[LOG] 378586 el cur=1358 prev=2147483647
+[WRN] 378590 Hall dly 14
+[LOG] 379686 az duty 17
+[LOG] 381086 az cur=2431 prev=2147483647
+[WRN] 381090 Hall dly 15
+[LOG] 383086 az cur=2215 prev=2431
+[WRN] 383089 Hall dly 13
+[LOG] 385086 az cur=1998 prev=2215
+[WRN] 385089 Hall dly 13
+[LOG] 387086 az cur=1782 prev=1998
+[WRN] 387089 Hall dly 14
+[LOG] 389086 az cur=1565 prev=1782
+[WRN] 389089 Hall dly 13
+[LOG] 391086 az cur=1348 prev=1565
+[WRN] 391089 Hall dly 13
+[LOG] 393086 az cur=1133 prev=1348
+[WRN] 393089 Hall dly 13
+[LOG] 395086 az cur=917 prev=1133
+[WRN] 395089 Hall dly 13
+[LOG] 397086 az cur=702 prev=917
+[WRN] 397089 Hall dly 13
+[LOG] 399086 az cur=489 prev=702
+[WRN] 399089 Hall dly 14
+[LOG] 401086 az cur=275 prev=489
+[WRN] 401089 Hall dly 13
+[LOG] 403086 az cur=61 prev=275
+[WRN] 403089 Hall dly 14
+[LOG] 403595 az duty 32
+[LOG] 403881 83 az ZERO!!
+[LOG] 404086 305 az ZERO!!
+[LOG] 404088 323 az ZERO!!
+[LOG] 404191 new elevation 10*deg: 1200
+[LOG] 404194 el duty 95
+[LOG] 406086 el cur=1539 prev=2147483647
+[WRN] 406090 Hall dly 15
+[LOG] 407086 305 az ZERO!!
+[LOG] 407088 323 az ZERO!!
+[LOG] 407191 az duty 83
+[LOG] 408586 az cur=146 prev=2147483647
+[WRN] 408589 Hall dly 14
+[LOG] 410586 az cur=361 prev=146
+[WRN] 410589 Hall dly 13
+[LOG] 412586 az cur=575 prev=361
+[WRN] 412589 Hall dly 14
+[LOG] 414586 az cur=789 prev=575
+[WRN] 414589 Hall dly 13
+[LOG] 416586 az cur=1002 prev=789
+[WRN] 416589 Hall dly 14
+[LOG] 418586 az cur=1215 prev=1002
+[WRN] 418589 Hall dly 13
+[LOG] 420586 az cur=1425 prev=1215
+[WRN] 420589 Hall dly 13
+[LOG] 422586 az cur=1634 prev=1425
+[WRN] 422589 Hall dly 14
+[LOG] 424586 az cur=1844 prev=1634
+[WRN] 424589 Hall dly 14
+[LOG] 426586 az cur=2052 prev=1844
+[WRN] 426589 Hall dly 13
+[LOG] 428586 az cur=2263 prev=2052
+[WRN] 428589 Hall dly 13
+[LOG] 430586 az cur=2475 prev=2263
+[WRN] 430589 Hall dly 14
+[LOG] 431686 new elevation 10*deg: 900
+[LOG] 431689 el duty 5
+[LOG] 433586 el cur=1388 prev=2147483647
+[WRN] 433590 Hall dly 14
+[LOG] 434774 az duty 17
+[LOG] 436174 az cur=2431 prev=2147483647
+[WRN] 436178 Hall dly 14
+[LOG] 438174 az cur=2216 prev=2431
+[WRN] 438177 Hall dly 13
+[LOG] 440174 az cur=1999 prev=2216
+[WRN] 440177 Hall dly 13
+[LOG] 442174 az cur=1783 prev=1999
+[WRN] 442177 Hall dly 13
+[LOG] 444174 az cur=1567 prev=1783
+[WRN] 444177 Hall dly 13
+[LOG] 446174 az cur=1350 prev=1567
+[WRN] 446177 Hall dly 13
+[LOG] 448174 az cur=1135 prev=1350
+[WRN] 448177 Hall dly 13
+[LOG] 450174 az cur=918 prev=1135
+[WRN] 450177 Hall dly 13
+[LOG] 452174 az cur=703 prev=918
+[WRN] 452177 Hall dly 13
+[LOG] 454174 az cur=489 prev=703
+[WRN] 454177 Hall dly 13
+[LOG] 456174 az cur=275 prev=489
+[WRN] 456177 Hall dly 13
+[LOG] 458174 az cur=61 prev=275
+[WRN] 458177 Hall dly 13
+[LOG] 458674 az duty 32
+[LOG] 458955 83 az ZERO!!
+[LOG] 459174 305 az ZERO!!
+[LOG] 459176 323 az ZERO!!
+[LOG] 459279 new elevation 10*deg: 1220
+[LOG] 459282 el duty 95
+[LOG] 461174 el cur=1513 prev=2147483647
+[WRN] 461178 Hall dly 14
+[LOG] 462674 305 az ZERO!!
+[LOG] 462676 323 az ZERO!!
+[LOG] 462779 az duty 83
+[LOG] 464174 az cur=145 prev=2147483647
+[WRN] 464177 Hall dly 14
+[LOG] 466174 az cur=360 prev=145
+[WRN] 466177 Hall dly 13
+[LOG] 468174 az cur=574 prev=360
+[WRN] 468177 Hall dly 14
+[LOG] 470174 az cur=791 prev=574
+[WRN] 470177 Hall dly 14
+[LOG] 472174 az cur=1007 prev=791
+[WRN] 472177 Hall dly 14
+[LOG] 474174 az cur=1221 prev=1007
+[WRN] 474177 Hall dly 14
+[LOG] 476174 az cur=1433 prev=1221
+[WRN] 476177 Hall dly 13
+[LOG] 478174 az cur=1643 prev=1433
+[WRN] 478177 Hall dly 14
+[LOG] 480174 az cur=1853 prev=1643
+[WRN] 480177 Hall dly 13
+[LOG] 482174 az cur=2061 prev=1853
+[WRN] 482177 Hall dly 14
+[LOG] 484174 az cur=2270 prev=2061
+[WRN] 484177 Hall dly 14
+[LOG] 486174 az cur=2483 prev=2270
+[WRN] 486177 Hall dly 14
+[LOG] 487274 new elevation 10*deg: 880
+[LOG] 487277 el duty 5
+[LOG] 489174 el cur=1416 prev=2147483647
+[WRN] 489178 Hall dly 15
+[LOG] 490774 az duty 17
+[LOG] 492174 az cur=2431 prev=2147483647
+[WRN] 492178 Hall dly 14
+[LOG] 494174 az cur=2213 prev=2431
+[WRN] 494177 Hall dly 14
+[LOG] 496174 az cur=1995 prev=2213
+[WRN] 496177 Hall dly 13
+[LOG] 498174 az cur=1777 prev=1995
+[WRN] 498177 Hall dly 13
+[LOG] 500174 az cur=1561 prev=1777
+[WRN] 500177 Hall dly 14
+[LOG] 502174 az cur=1343 prev=1561
+[WRN] 502177 Hall dly 14
+[LOG] 504174 az cur=1127 prev=1343
+[WRN] 504177 Hall dly 14
+[LOG] 506174 az cur=911 prev=1127
+[WRN] 506177 Hall dly 14
+[LOG] 508174 az cur=695 prev=911
+[WRN] 508177 Hall dly 13
+[LOG] 510174 az cur=479 prev=695
+[WRN] 510177 Hall dly 13
+[LOG] 512174 az cur=265 prev=479
+[WRN] 512177 Hall dly 13
+[LOG] 514174 az cur=51 prev=265
+[WRN] 514177 Hall dly 14
+[LOG] 514580 az duty 32
+[LOG] 514864 83 az ZERO!!
+[LOG] 514876 305 az ZERO!!
+[LOG] 514878 323 az ZERO!!
+[LOG] 514981 new elevation 10*deg: 1240
+[LOG] 514984 el duty 95
+[LOG] 516876 el cur=1484 prev=2147483647
+[WRN] 516880 Hall dly 14
+[LOG] 518409 305 az ZERO!!
+[LOG] 518411 323 az ZERO!!
+[LOG] 518514 az duty 83
+[LOG] 519909 az cur=144 prev=2147483647
+[WRN] 519912 Hall dly 15
+[LOG] 521909 az cur=358 prev=144
+[WRN] 521912 Hall dly 14
+[LOG] 523909 az cur=572 prev=358
+[WRN] 523912 Hall dly 13
+[LOG] 525909 az cur=787 prev=572
+[WRN] 525912 Hall dly 13
+[LOG] 527909 az cur=1000 prev=787
+[WRN] 527912 Hall dly 14
+[LOG] 529909 az cur=1213 prev=1000
+[WRN] 529912 Hall dly 14
+[LOG] 531909 az cur=1423 prev=1213
+[WRN] 531912 Hall dly 14
+[LOG] 533909 az cur=1631 prev=1423
+[WRN] 533912 Hall dly 13
+[LOG] 535909 az cur=1840 prev=1631
+[WRN] 535912 Hall dly 14
+[LOG] 537909 az cur=2049 prev=1840
+[WRN] 537912 Hall dly 13
+[LOG] 539909 az cur=2259 prev=2049
+[WRN] 539912 Hall dly 13
+[LOG] 541909 az cur=2471 prev=2259
+[WRN] 541912 Hall dly 13
+[LOG] 543509 new elevation 10*deg: 860
+[LOG] 543512 el duty 5
+[LOG] 545409 el cur=1446 prev=2147483647
+[WRN] 545413 Hall dly 15
+[LOG] 547509 az duty 17
+[LOG] 548909 az cur=2431 prev=2147483647
+[WRN] 548913 Hall dly 14
+[LOG] 550909 az cur=2215 prev=2431
+[WRN] 550912 Hall dly 14
+[LOG] 552909 az cur=1999 prev=2215
+[WRN] 552912 Hall dly 13
+[LOG] 554909 az cur=1783 prev=1999
+[WRN] 554912 Hall dly 14
+[LOG] 556909 az cur=1567 prev=1783
+[WRN] 556912 Hall dly 13
+[LOG] 558909 az cur=1351 prev=1567
+[WRN] 558912 Hall dly 13
+[LOG] 560909 az cur=1137 prev=1351
+[WRN] 560912 Hall dly 14
+[LOG] 562909 az cur=921 prev=1137
+[WRN] 562912 Hall dly 13
+[LOG] 564909 az cur=705 prev=921
+[WRN] 564912 Hall dly 14
+[LOG] 566909 az cur=491 prev=705
+[WRN] 566912 Hall dly 14
+[LOG] 568909 az cur=277 prev=491
+[WRN] 568912 Hall dly 13
+[LOG] 570909 az cur=63 prev=277
+[WRN] 570912 Hall dly 13
+[LOG] 571430 az duty 32
+[LOG] 571715 83 az ZERO!!
+[LOG] 571909 305 az ZERO!!
+[LOG] 571911 323 az ZERO!!
+[LOG] 572014 new elevation 10*deg: 1260
+[LOG] 572017 el duty 95
+[LOG] 573909 el cur=1455 prev=2147483647
+[WRN] 573913 Hall dly 14
+[LOG] 575909 305 az ZERO!!
+[LOG] 575911 323 az ZERO!!
+[LOG] 576014 az duty 83
+[LOG] 577409 az cur=145 prev=2147483647
+[WRN] 577412 Hall dly 14
+[LOG] 579409 az cur=361 prev=145
+[WRN] 579412 Hall dly 14
+[LOG] 581409 az cur=576 prev=361
+[WRN] 581412 Hall dly 14
+[LOG] 583409 az cur=793 prev=576
+[WRN] 583412 Hall dly 13
+[LOG] 585409 az cur=1009 prev=793
+[WRN] 585412 Hall dly 13
+[LOG] 587409 az cur=1222 prev=1009
+[WRN] 587412 Hall dly 14
+[LOG] 589409 az cur=1435 prev=1222
+[WRN] 589412 Hall dly 13
+[LOG] 591409 az cur=1645 prev=1435
+[WRN] 591412 Hall dly 13
+[LOG] 593409 az cur=1855 prev=1645
+[WRN] 593412 Hall dly 13
+[LOG] 595409 az cur=2065 prev=1855
+[WRN] 595412 Hall dly 13
+[LOG] 597409 az cur=2276 prev=2065
+[WRN] 597412 Hall dly 13
+[LOG] 599409 az cur=2489 prev=2276
+[WRN] 599412 Hall dly 13
+[LOG] 600509 new elevation 10*deg: 840
+[LOG] 600512 el duty 5
+[LOG] 602409 el cur=1475 prev=2147483647
+[WRN] 602413 Hall dly 15
+[LOG] 604409 el cur=1169 prev=1475
+[WRN] 604412 Hall dly 13
+[LOG] 605009 az duty 17
+[LOG] 606409 az cur=2432 prev=2147483647
+[WRN] 606413 Hall dly 14
+[LOG] 608409 az cur=2215 prev=2432
+[WRN] 608412 Hall dly 14
+[LOG] 610409 az cur=1999 prev=2215
+[WRN] 610412 Hall dly 14
+[LOG] 612409 az cur=1783 prev=1999
+[WRN] 612412 Hall dly 13
+[LOG] 614409 az cur=1566 prev=1783
+[WRN] 614412 Hall dly 14
+[LOG] 616409 az cur=1350 prev=1566
+[WRN] 616412 Hall dly 14
+[LOG] 618409 az cur=1134 prev=1350
+[WRN] 618412 Hall dly 14
+[LOG] 620409 az cur=917 prev=1134
+[WRN] 620412 Hall dly 14
+[LOG] 622409 az cur=701 prev=917
+[WRN] 622412 Hall dly 14
+[LOG] 624409 az cur=487 prev=701
+[WRN] 624412 Hall dly 13
+[LOG] 626409 az cur=272 prev=487
+[WRN] 626412 Hall dly 14
+[LOG] 628409 az cur=57 prev=272
+[WRN] 628412 Hall dly 13
+[LOG] 628873 az duty 32
+[LOG] 629157 83 az ZERO!!
+[LOG] 629168 305 az ZERO!!
+[LOG] 629170 323 az ZERO!!
+[LOG] 629273 new elevation 10*deg: 1280
+[LOG] 629276 el duty 95
+[LOG] 631168 el cur=1427 prev=2147483647
+[WRN] 631172 Hall dly 14
+[LOG] 633168 el cur=1730 prev=1427
+[WRN] 633171 Hall dly 13
+[LOG] 633668 305 az ZERO!!
+[LOG] 633670 323 az ZERO!!
+[LOG] 633773 az duty 83
+[LOG] 635168 az cur=147 prev=2147483647
+[WRN] 635171 Hall dly 14
+[LOG] 637168 az cur=362 prev=147
+[WRN] 637171 Hall dly 13
+[LOG] 639168 az cur=578 prev=362
+[WRN] 639171 Hall dly 13
+[LOG] 641168 az cur=795 prev=578
+[WRN] 641171 Hall dly 14
+[LOG] 643168 az cur=1012 prev=795
+[WRN] 643171 Hall dly 14
+[LOG] 645168 az cur=1227 prev=1012
+[WRN] 645171 Hall dly 13
+[LOG] 647168 az cur=1441 prev=1227
+[WRN] 647171 Hall dly 13
+[LOG] 649168 az cur=1652 prev=1441
+[WRN] 649171 Hall dly 14
+[LOG] 651168 az cur=1862 prev=1652
+[WRN] 651171 Hall dly 13
+[LOG] 653168 az cur=2073 prev=1862
+[WRN] 653171 Hall dly 14
+[LOG] 655168 az cur=2286 prev=2073
+[WRN] 655171 Hall dly 14
+[LOG] 657168 az cur=2501 prev=2286
+[WRN] 657171 Hall dly 13
+[LOG] 658768 new elevation 10*deg: 1300
+[LOG] 658771 el duty 95
+[LOG] 659268 az duty 17
+[LOG] 660668 az cur=2434 prev=2147483647
+[WRN] 660672 Hall dly 14
+[LOG] 662668 az cur=2218 prev=2434
+[WRN] 662671 Hall dly 13
+[LOG] 664668 az cur=2002 prev=2218
+[WRN] 664671 Hall dly 14
+[LOG] 666668 az cur=1787 prev=2002
+[WRN] 666671 Hall dly 14
+[LOG] 668668 az cur=1571 prev=1787
+[WRN] 668671 Hall dly 14
+[LOG] 670668 az cur=1355 prev=1571
+[WRN] 670671 Hall dly 14
+[LOG] 672668 az cur=1139 prev=1355
+[WRN] 672671 Hall dly 13
+[LOG] 674668 az cur=924 prev=1139
+[WRN] 674671 Hall dly 13
+[LOG] 676668 az cur=711 prev=924
+[WRN] 676671 Hall dly 13
+[LOG] 678668 az cur=502 prev=711
+[WRN] 678671 Hall dly 13
+[LOG] 680668 az cur=292 prev=502
+[WRN] 680671 Hall dly 13
+[LOG] 682668 az cur=84 prev=292
+[WRN] 682671 Hall dly 13
+[LOG] 683392 az duty 32
+[LOG] 683696 83 az ZERO!!
+[LOG] 683707 305 az ZERO!!
+[LOG] 683709 323 az ZERO!!
+[LOG] 683812 new elevation 10*deg: 1320
+[LOG] 683815 el duty 95
+[LOG] 684207 305 az ZERO!!
+[LOG] 684209 323 az ZERO!!
+[LOG] 684312 az duty 83
+[LOG] 685707 az cur=145 prev=2147483647
+[WRN] 685710 Hall dly 14
+[LOG] 687707 az cur=362 prev=145
+[WRN] 687710 Hall dly 14
+[LOG] 689707 az cur=578 prev=362
+[WRN] 689710 Hall dly 13
+[LOG] 691707 az cur=793 prev=578
+[WRN] 691710 Hall dly 13
+[LOG] 693707 az cur=1009 prev=793
+[WRN] 693710 Hall dly 13
+[LOG] 695707 az cur=1222 prev=1009
+[WRN] 695710 Hall dly 14
+[LOG] 697707 az cur=1435 prev=1222
+[WRN] 697710 Hall dly 14
+[LOG] 699707 az cur=1644 prev=1435
+[WRN] 699710 Hall dly 14
+[LOG] 701707 az cur=1851 prev=1644
+[WRN] 701710 Hall dly 14
+[LOG] 703707 az cur=2061 prev=1851
+[WRN] 703710 Hall dly 13
+[LOG] 705707 az cur=2271 prev=2061
+[WRN] 705710 Hall dly 13
+[LOG] 707707 az cur=2484 prev=2271
+[WRN] 707710 Hall dly 14
+[LOG] 708807 new elevation 10*deg: 1340
+[LOG] 708810 el duty 95
+[LOG] 709307 az duty 17
+[LOG] 710707 az cur=2435 prev=2147483647
+[WRN] 710711 Hall dly 15
+[LOG] 712707 az cur=2219 prev=2435
+[WRN] 712710 Hall dly 13
+[LOG] 714707 az cur=2002 prev=2219
+[WRN] 714710 Hall dly 13
+[LOG] 716707 az cur=1787 prev=2002
+[WRN] 716710 Hall dly 13
+[LOG] 718707 az cur=1571 prev=1787
+[WRN] 718710 Hall dly 13
+[LOG] 720707 az cur=1355 prev=1571
+[WRN] 720710 Hall dly 13
+[LOG] 722707 az cur=1140 prev=1355
+[WRN] 722710 Hall dly 13
+[LOG] 724707 az cur=925 prev=1140
+[WRN] 724710 Hall dly 14
+[LOG] 726707 az cur=713 prev=925
+[WRN] 726710 Hall dly 13
+[LOG] 728707 az cur=505 prev=713
+[WRN] 728710 Hall dly 13
+[LOG] 730707 az cur=297 prev=505
+[WRN] 730710 Hall dly 13
+[LOG] 732707 az cur=89 prev=297
+[WRN] 732710 Hall dly 13
+[LOG] 733478 az duty 32
+[LOG] 733769 83 az ZERO!!
+[LOG] 733780 305 az ZERO!!
+[LOG] 733782 323 az ZERO!!
+[LOG] 733885 new elevation 10*deg: 1360
+[LOG] 733888 el duty 95
+[LOG] 734280 305 az ZERO!!
+[LOG] 734282 323 az ZERO!!
+[LOG] 734385 az duty 83
+[LOG] 735780 az cur=147 prev=2147483647
+[WRN] 735783 Hall dly 14
+[LOG] 737780 az cur=364 prev=147
+[WRN] 737783 Hall dly 13
+[LOG] 739780 az cur=582 prev=364
+[WRN] 739783 Hall dly 14
+[LOG] 741780 az cur=801 prev=582
+[WRN] 741783 Hall dly 13
+[LOG] 743780 az cur=1020 prev=801
+[WRN] 743783 Hall dly 14
+[LOG] 745780 az cur=1235 prev=1020
+[WRN] 745783 Hall dly 13
+[LOG] 747780 az cur=1448 prev=1235
+[WRN] 747783 Hall dly 14
+[LOG] 749780 az cur=1658 prev=1448
+[WRN] 749783 Hall dly 13
+[LOG] 751780 az cur=1869 prev=1658
+[WRN] 751783 Hall dly 13
+[LOG] 753780 az cur=2078 prev=1869
+[WRN] 753783 Hall dly 14
+[LOG] 755780 az cur=2289 prev=2078
+[WRN] 755783 Hall dly 14
+[LOG] 757780 az cur=2503 prev=2289
+[WRN] 757783 Hall dly 13
+[LOG] 759380 switching to freq 1
+[LOG] 759383 az duty 17
+[LOG] 759391 Resume tuner
+[LOG] 759393 Init tuner I2C bus
+[LOG] 759496 Disable serit frontend 3V3 (PE1)
+[LOG] 759500 Disable serit frontend 1V0 (PE0)
+[LOG] 759604 Enable serit frontend 3V3 (PE1)
+[LOG] 759608 Enable serit frontend 1V0 (PE0)
+[LOG] 759916 stv0903 chip identification: 0x20
+[LOG] 759937 stv0903 clock: 136000000
+[LOG] 759949 NIT init
+[LOG] 760651 NIT reg 8000: 01
+[LOG] 760655 NIT reg 8001: 40
+[LOG] 760658 NIT reg 8002: 02
+[LOG] 760661 NIT reg 8003: 10
+[LOG] 760664 NIT reg 8004: 05
+[LOG] 760667 NIT reg 8005: 40
+[LOG] 760670 NIT reg 8006: 0b
+[LOG] 760673 NIT reg 8007: 00
+[LOG] 760676 NIT reg 8008: 00
+[LOG] 760679 NIT reg 8009: 01
+[LOG] 760682 NIT version 0x16
+[LOG] 760685 NIT id 0x4e
+[LOG] 760688 NIT acquisition stop
+[LOG] 760691 Enable LNB 1
+[LOG] 762205 az cur=2280 prev=2147483647
+[WRN] 762209 Hall dly 14
+[LOG] 764205 az cur=2063 prev=2280
+[WRN] 764208 Hall dly 13
+[LOG] 766205 az cur=1845 prev=2063
+[WRN] 766208 Hall dly 13
+[LOG] 768205 az cur=1627 prev=1845
+[WRN] 768208 Hall dly 14
+[LOG] 770205 az cur=1411 prev=1627
+[WRN] 770208 Hall dly 13
+[LOG] 772205 az cur=1193 prev=1411
+[WRN] 772208 Hall dly 13
+[LOG] 774205 az cur=977 prev=1193
+[WRN] 774208 Hall dly 14
+[LOG] 776205 az cur=764 prev=977
+[WRN] 776208 Hall dly 13
+[LOG] 778205 az cur=552 prev=764
+[WRN] 778208 Hall dly 13
+[LOG] 780205 az cur=344 prev=552
+[WRN] 780208 Hall dly 13
+[LOG] 782205 az cur=135 prev=344
+[WRN] 782208 Hall dly 13
+[LOG] 783421 az duty 32
+[LOG] 783711 83 az ZERO!!
+[LOG] 783723 305 az ZERO!!
+[LOG] 783725 323 az ZERO!!
+[LOG] 783859 sat ASTRA 3 23.5E tun 1 ok
+[LOG] 784223 305 az ZERO!!
+[LOG] 784225 323 az ZERO!!
+[LOG] 784328 new elevation 10*deg: 1060
+[LOG] 784331 el duty 5
+[LOG] 786223 el cur=1626 prev=2147483647
+[WRN] 786227 Hall dly 15
+[LOG] 787723 305 az ZERO!!
+[LOG] 787725 323 az ZERO!!
+[LOG] 787828 az duty 83
+[LOG] 789223 az cur=147 prev=2147483647
+[WRN] 789226 Hall dly 15
+[LOG] 791223 az cur=365 prev=147
+[WRN] 791226 Hall dly 13
+[LOG] 793223 az cur=582 prev=365
+[WRN] 793226 Hall dly 13
+[LOG] 795223 az cur=799 prev=582
+[WRN] 795226 Hall dly 14
+[LOG] 797223 az cur=1015 prev=799
+[WRN] 797226 Hall dly 13
+[LOG] 799223 az cur=1229 prev=1015
+[WRN] 799226 Hall dly 13
+[LOG] 801223 az cur=1442 prev=1229
+[WRN] 801226 Hall dly 14
+[LOG] 803223 az cur=1655 prev=1442
+[WRN] 803226 Hall dly 14
+[LOG] 805223 az cur=1867 prev=1655
+[WRN] 805226 Hall dly 13
+[LOG] 807223 az cur=2080 prev=1867
+[WRN] 807226 Hall dly 14
+[LOG] 809223 az cur=2294 prev=2080
+[WRN] 809226 Hall dly 13
+[LOG] 811223 az cur=2508 prev=2294
+[WRN] 811226 Hall dly 14
+[LOG] 812323 new elevation 10*deg: 1040
+[LOG] 812326 el duty 5
+[LOG] 812823 az duty 17
+[LOG] 814223 az cur=2433 prev=2147483647
+[WRN] 814227 Hall dly 14
+[LOG] 816223 az cur=2216 prev=2433
+[WRN] 816226 Hall dly 13
+[LOG] 818223 az cur=1999 prev=2216
+[WRN] 818226 Hall dly 13
+[LOG] 820223 az cur=1784 prev=1999
+[WRN] 820226 Hall dly 13
+[LOG] 822223 az cur=1568 prev=1784
+[WRN] 822226 Hall dly 13
+[LOG] 824223 az cur=1351 prev=1568
+[WRN] 824226 Hall dly 14
+[LOG] 826223 az cur=1135 prev=1351
+[WRN] 826226 Hall dly 13
+[LOG] 828223 az cur=919 prev=1135
+[WRN] 828226 Hall dly 13
+[LOG] 830223 az cur=704 prev=919
+[WRN] 830226 Hall dly 14
+[LOG] 832223 az cur=492 prev=704
+[WRN] 832226 Hall dly 13
+[LOG] 834223 az cur=280 prev=492
+[WRN] 834226 Hall dly 13
+[LOG] 836223 az cur=67 prev=280
+[WRN] 836226 Hall dly 14
+[LOG] 836785 az duty 32
+[LOG] 837068 83 az ZERO!!
+[LOG] 837223 305 az ZERO!!
+[LOG] 837225 323 az ZERO!!
+[LOG] 837328 new elevation 10*deg: 1080
+[LOG] 837331 el duty 95
+[LOG] 838223 305 az ZERO!!
+[LOG] 838225 323 az ZERO!!
+[LOG] 838328 az duty 83
+[LOG] 839723 az cur=148 prev=2147483647
+[WRN] 839726 Hall dly 14
+[LOG] 841723 az cur=366 prev=148
+[WRN] 841726 Hall dly 13
+[LOG] 843723 az cur=583 prev=366
+[WRN] 843726 Hall dly 13
+[LOG] 845723 az cur=802 prev=583
+[WRN] 845726 Hall dly 13
+[LOG] 847723 az cur=1020 prev=802
+[WRN] 847726 Hall dly 14
+[LOG] 849723 az cur=1235 prev=1020
+[WRN] 849726 Hall dly 13
+[LOG] 851723 az cur=1450 prev=1235
+[WRN] 851726 Hall dly 14
+[LOG] 853723 az cur=1665 prev=1450
+[WRN] 853726 Hall dly 13
+[LOG] 855723 az cur=1879 prev=1665
+[WRN] 855726 Hall dly 13
+[LOG] 857723 az cur=2093 prev=1879
+[WRN] 857726 Hall dly 13
+[LOG] 859723 az cur=2309 prev=2093
+[WRN] 859726 Hall dly 14
+[LOG] 861723 az cur=2525 prev=2309
+[WRN] 861726 Hall dly 14
+[LOG] 862323 new elevation 10*deg: 1020
+[LOG] 862326 el duty 5
+[LOG] 863323 az duty 17
+[LOG] 864723 az cur=2439 prev=2147483647
+[WRN] 864727 Hall dly 15
+[LOG] 866723 az cur=2220 prev=2439
+[WRN] 866726 Hall dly 13
+[LOG] 868723 az cur=2002 prev=2220
+[WRN] 868726 Hall dly 14
+[LOG] 870723 az cur=1785 prev=2002
+[WRN] 870726 Hall dly 14
+[LOG] 872723 az cur=1568 prev=1785
+[WRN] 872726 Hall dly 13
+[LOG] 874723 az cur=1350 prev=1568
+[WRN] 874726 Hall dly 14
+[LOG] 876723 az cur=1134 prev=1350
+[WRN] 876726 Hall dly 13
+[LOG] 878723 az cur=918 prev=1134
+[WRN] 878726 Hall dly 13
+[LOG] 880723 az cur=703 prev=918
+[WRN] 880726 Hall dly 13
+[LOG] 882723 az cur=491 prev=703
+[WRN] 882726 Hall dly 14
+[LOG] 884723 az cur=278 prev=491
+[WRN] 884726 Hall dly 13
+[LOG] 886723 az cur=66 prev=278
+[WRN] 886726 Hall dly 14
+[LOG] 887281 az duty 32
+[LOG] 887384 az duty 32
+[LOG] 887386 83 az ZERO!!
+[LOG] 887723 305 az ZERO!!
+[LOG] 887725 323 az ZERO!!
+[LOG] 887828 new elevation 10*deg: 1100
+[LOG] 887831 el duty 95
+[LOG] 888723 305 az ZERO!!
+[LOG] 888725 323 az ZERO!!
+[LOG] 888828 az duty 83
+[LOG] 890223 az cur=147 prev=2147483647
+[WRN] 890226 Hall dly 14
+[LOG] 892223 az cur=364 prev=147
+[WRN] 892226 Hall dly 14
+[LOG] 894223 az cur=582 prev=364
+[WRN] 894226 Hall dly 13
+[LOG] 896223 az cur=801 prev=582
+[WRN] 896226 Hall dly 13
+[LOG] 898223 az cur=1019 prev=801
+[WRN] 898226 Hall dly 14
+[LOG] 900223 az cur=1236 prev=1019
+[WRN] 900226 Hall dly 14
+help
+help
+	List CLI commands
+sat
+	Usage: sat [idx]	List MAS satellites config
+tune
+	Usage: tune sat_idx tun_idx	Tune on sat_idx/tun_idx
+i2cw
+	Usage: i2cw byte0 byte1 byte2... 	i2c write
+i2cr
+	Usage: i2cr count byte0 [byte1] ... 	i2c read
+mot
+	Usage: mot [21|22]cmd	Send cmd to motor
+open
+	Usage: open	Open dish
+close
+	Usage: close	Close dish
+search
+	Usage: search	Move dish for searching
+sys
+	Usage: sys suspend|resume	System commands
+mmi
+	Usage: mmi cmd	Send cmd to mmi
+diq
+	Usage: diq {start|stop}	diseqc detection start/stop
+mas> [WRN] 901339 Hall dly 55
+[LOG] 902223 az cur=1451 prev=1236
+[WRN] 902226 Hall dly 14
+[LOG] 904223 az cur=1665 prev=1451
+[WRN] 904226 Hall dly 13
+[LOG] 906223 az cur=1878 prev=1665
+[WRN] 906226 Hall dly 13
+[LOG] 907139 mono btn pressed
+[LOG] 907394 close task started
+[LOG] 907397 el duty 95
+[LOG] 907399 az duty 95
+[LOG] 908003 az duty 5
+[LOG] 908011 close waiting for 0x00
+[LOG] 920918 az duty 28
+[LOG] 921008 83 az ZERO!!
+[LOG] 921014 305 az ZERO!!
+[LOG] 921016 323 az ZERO!!
+[LOG] 921119 305 az ZERO!!
+[LOG] 921514 el duty 5
+[LOG] 931978 83 el ZERO!!
+[LOG] 932014 305 el ZERO!!
+[LOG] 932016 323 el ZERO!!
+[LOG] 932119 close task done
+[LOG] 932121 Suspend motors
+[LOG] 932124 Motors off
+[LOG] 932327 Suspend tuner
+[LOG] 932439 Disable serit frontend 3V3 (PE1)
+[LOG] 932443 Disable serit frontend 1V0 (PE0)
+[LOG] 932447 Enable LNB 0
+help
+help
+	List CLI commands
+sat
+	Usage: sat [idx]	List MAS satellites config
+tune
+	Usage: tune sat_idx tun_idx	Tune on sat_idx/tun_idx
+i2cw
+	Usage: i2cw byte0 byte1 byte2... 	i2c write
+i2cr
+	Usage: i2cr count byte0 [byte1] ... 	i2c read
+mot
+	Usage: mot [21|22]cmd	Send cmd to motor
+open
+	Usage: open	Open dish
+close
+	Usage: close	Close dish
+search
+	Usage: search	Move dish for searching
+sys
+	Usage: sys suspend|resume	System commands
+mmi
+	Usage: mmi cmd	Send cmd to mmi
+diq
+	Usage: diq {start|stop}	diseqc detection start/stop
+mas> mmia
+Invalid cmd
+mas> mmm
+Invalid cmd
+mas> mmi a
+WR (3): 28 61 29 
+mas> 
+mas> mmi a
+WR (3): 28 61 29 
+mas> mmi a
+WR (3): 28 61 29 
+mas> mmi ab
+WR (4): 28 61 62 29 
+mas> mmi abab
+WR (6): 28 61 62 61 62 29 
+mas> help
+help
+	List CLI commands
+sat
+	Usage: sat [idx]	List MAS satellites config
+tune
+	Usage: tune sat_idx tun_idx	Tune on sat_idx/tun_idx
+i2cw
+	Usage: i2cw byte0 byte1 byte2... 	i2c write
+i2cr
+	Usage: i2cr count byte0 [byte1] ... 	i2c read
+mot
+	Usage: mot [21|22]cmd	Send cmd to motor
+open
+	Usage: open	Open dish
+close
+	Usage: close	Close dish
+search
+	Usage: search	Move dish for searching
+sys
+	Usage: sys suspend|resume	System commands
+mmi
+	Usage: mmi cmd	Send cmd to mmi
+diq
+	Usage: diq {start|stop}	diseqc detection start/stop
+mas> diq start
+mas> diq stop
+mas> sys suspend
+[LOG] 1076169 Suspend motors
+[LOG] 1076172 Motors off
+[LOG] 1076374 Suspend tuner
+[LOG] 1076486 Disable serit frontend 3V3 (PE1)
+[LOG] 1076490 Disable serit frontend 1V0 (PE0)
+[LOG] 1076495 Enable LNB 0
+Invalid cmd
+mas> i2cw
+Invalid cmd
+mas> i2cw a
+Invalid cmd
+mas> i2cr 10 1
+Invalid argument: 1
+Invalid cmd
+mas> sat
+sats.bin @ 0x8000
+Found 12 sats:
+0:   HOTBIRD 13E
+1:   ASTRA 1 19.2E
+2:   EUTELSAT 5W
+3:   ASTRA 3 23.5E
+4:   TURKSAT 42E
+5:   ASTRA 2 28.2E
+6:   EUTELSAT 16E
+7:   EUTELSAT 9E
+8:   ASTRA 4 4.8E
+9:   THOR 0.8W
+10:   AMOS 4W
+11:   HISPASAT 30W
+mas> 

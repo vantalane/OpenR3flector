@@ -1,0 +1,134 @@
+
+fabric mpn is:
+XC3S50A
+
+
+SERIT SDA 		-> I2C3 of stm
+SERIT SCL 		-> I2C3 of stm
+SERIT DISEQC in ->
+
+SERIT DISEQC out -> No clue, there is a N.C. R2 res, but idk what else it goes to
+
+ SERIT D0 -> (fpga pin 65) IO_L04N_1/RHCLK7 
+ SERIT D1 -> (fpga 64) IO_L04P_1/IRDY1/RHCLK6 
+ SERIT D2 -> (fpga 62) IO_L03N_1/TRDY1/RHCLK3  
+ SERIT D3 -> (61) IO_L03P_1/RHCLK2
+ SERIT D4 -> (60) IO_L02N_1/RHCLK1
+ SERIT D5 -> (59) IO_L02P_1/RHCLK0
+ SERIT D6 -> (57) IO_L01N_1
+ SERIT D7 -> (56) IO_L01P_1
+ SERIT Dclock -> (90) IO_0/GCLK11 
+ SERIT valid -> (86) IO_L03N_0/GCLK7
+ SERIT sync -> (83) IO_L02P_0/GCLK4 
+
+ SERIT error -> STM32 PE4 pin 
+ SERIT reset -> STM PE3 pin
+
+
+STM connections known 
+ STM PB9 -> IO_L03N_3/LHCLK1
+
+The configuration of pins 23-25 configure the device to operate in SPI slave mode.
+Fpga loads bitstream in MXIC flash as slv mode.
+
+
+PIN 1 - TMS J151 connector pin 2
+PIN 2 - TMS J151 connector pin 5
+PIN 3 -
+PIN 4 -
+PIN 5 - 
+PIN 6 -
+PIN 7 - STM32 PE6 
+PIN 8 -
+PIN 9 -
+PIN 10 - to STM32 PB9
+PIN 11 -
+PIN 12 -
+PIN 13 -
+PIN 14 -
+PIN 15 -
+PIN 16 -
+PIN 17 -
+PIN 18 -
+PIN 19 -
+PIN 20 -
+PIN 21 -
+PIN 22 -
+PIN 23 - short thru R160 to gnd		(M1) makes fpga download bitstream in slv mode
+PIN 24 - short thru r159 to gnd 	(M2) makes fpga download bitstream in slv mode
+PIN 25 - OPEN thru N.C. r161 		(M0) 
+PIN 26 -
+PIN 27 - 4B2 pin CL257 demux 
+PIN 28 -
+PIN 29 - OPEN
+PIN 30 - OPEN 
+PIN 31 - OPEN
+PIN 32 - open 
+PIN 33 - open 
+PIN 34 - (likely N.C.)
+PIN 35 - (likely N.C.)
+PIN 36 - (likely N.C.)
+PIN 37 - (likely N.C.)
+PIN 38 - (OWN) supply source
+PIN 39 - Short to gnd
+PIN 40 - (likely N.C.)
+PIN 41 - (likely N.C.) 
+PIN 42 - GND 
+PIN 43 - (likely N.C.)
+PIN 44 - (likely N.C.)
+PIN 45 - Reset pin of NXP IS602B 
+PIN 46 - 2B2 of CL257 
+PIN 47 - GND 
+PIN 48 -
+PIN 49 -
+PIN 50 - TO STM32 PB5 
+PIN 51 -  CL257 demux  3B2 
+PIN 52 - CL257 demux 1B2 pin (muxing flash MX25V1006E)
+PIN 53 - 
+PIN 54 -
+PIN 55 -
+PIN 56 - SERIT D7 
+PIN 57 - SERIT D6
+PIN 58 - GND
+PIN 59 - SERIT D5 
+PIN 60 - SERIT D4
+PIN 61 - SERIT D3 
+PIN 62 - SERIT D2 
+PIN 63 - GND 
+PIN 64 - SERIT D1 
+PIN 65 - SERIT D0 
+PIN 66 - 
+PIN 67 - 
+PIN 68 -
+PIN 69 -
+PIN 70 -
+PIN 71 - 
+PIN 72 - OPEN 
+PIN 73 - OPEN 
+PIN 74 -
+PIN 75 - TDO J151 connector pin 4
+PIN 76 - TCK CLK J151 connector pin 3
+PIN 77 -
+PIN 78 -
+PIN 79 -
+PIN 80 -
+PIN 81 -
+PIN 82 -
+PIN 83 - SERIT SYNC pin 
+PIN 84 - (likely N.C.) 
+PIN 85 - (likely N.C.) 
+PIN 86 - SERIT VALID pin 
+PIN 87 -
+PIN 88 -
+PIN 89 -
+PIN 90 - SERIT CLOCK 
+PIN 91 -
+PIN 92 -
+PIN 93 -
+PIN 94 -
+PIN 95 -
+PIN 96 -
+PIN 97 -
+PIN 98 -
+PIN 99 - 
+PIN 100 - STM32 PE5

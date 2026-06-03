@@ -1,0 +1,86 @@
+This file is a reverse-engineering log:
+
+
+FYI The "thick" cables are 2mm in diameter, thin ones are 1mm.
+
+The complete cable assy has the following wires:
+
+- 2x coax cable from LNB's
+- grey (only on connector, loopback)
+- Thick dark blue
+- Thick white
+- Thick green
+- Thick brown
+- Thin red
+- Thin orange
+- Thin green
+- thin white
+- thin purple
+- thin yellow
+- thin black
+
+
+
+we got a big ass connector which is for motor control with extra's.
+The connector is 9x2 pins. and is a classic MOLEX connector, similar to the ATX power  
+
+The connector has marked the pin count direction on the plastic housing. When from the back, and by back I mean the side of the connector where you INSERT the crimped wires into the housing, the pin count starts from right bottom.
+
+The connector pins house the following wires:
+
+1   Thin black
+2   thin yellow
+3   NC
+4   nc
+5   thin purple
+6   thin white
+7   thin green
+8   thin orange
+9   thick grey LOOP END
+10  thin red
+11  NC
+12  thick brown
+13  thick green
+14  nc
+15  nc 
+16  thick white
+17  thick blue
+18  thick grey LOOP OTHER END 
+
+
+
+Guesses of which pin is what
+
+During normal operation, thick grey loopback has 11V on it
+
+
+Thick white wire is +11V when satellite goes DOWN,  PWM!
+Thick blue wire is +11 when satellite   goes UP,    PWM       
+Thick GREY is power loopback, the box wakes up when its connected.
+
+Thick green  PWM input of YAW motor, TURN dish LEFT
+thick brown  PWM input of YAW motor, turns dish RIGHT
+
+thin red wire is +11V all the time, no clue what it powers (encoder of potentiometer supply?)
+thin black wire is GND for logic stuff I suppose.
+
+thin green is is LOW when antenna is completely down, otherwise HIGH. Probably endstop
+thin orange is A ENCODER OUTPUT for antenna PITCH
+
+thin yellow, noisy when motors move. its connected to the level shifter after diode protection and LC filtering. Its connected through R466 to U451 CM01098  level shifter's 10th pin C, which is a input.
+
+(ALL CM0198 enable PINS are connected together!)
+
+thin purple is LOW when antenna is centered, otherwise HIGH. YAW endstop,
+thin white yaw movement encoder output .
+
+
+
+MECHANICAL CONSTRAINT!!
+
+The antenna can move ONLY to the RIGHT when initialised. When you try turning LEFT, there seems to be a mechanical endstop.
+It can turn 360 degrees comfortably, and a little over, At some point, somewere around 375 degrees, a mechanical endstop is touched.
+
+PITCH movement limit is around 15 to 75 apparently but I saw it can go further.
+
+https://satenne.com/wp-content/uploads/2020/12/Satenne-R3-Premium-Handleiding2020-2021.pdf
