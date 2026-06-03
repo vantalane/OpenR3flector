@@ -74,6 +74,10 @@ satenne_r3_opencontrol/
 ---
 
 ## Building and Using
+When you first clone OpenR3flector, you'll need to initialize and update all used submodules in order to be able to compile the code. Inside repo root do:
+
+>  git submodule update --init --recursive 
+
 
 Each component has its own README with build instructions:
 
