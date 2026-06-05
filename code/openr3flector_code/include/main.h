@@ -186,6 +186,10 @@
 #define LNB_TIM_PRESCALER 4U
 
 /*FPGA interfacing PINS*/
+
+#define FPGA_PROG_B_PIN GPIO_PIN_5
+#define FPGA_PROG_B_PORT GPIOE
+
 /*TODO add the pins shared between the fpga and the stm32*/
 
 /*COntrols for the MXIC flash etc*/

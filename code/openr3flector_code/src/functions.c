@@ -119,23 +119,32 @@ void GPIO_Init(void)
 	/* Hold in reset until Motor_Init() releases */
 	HAL_GPIO_WritePin(GPIOB, U350_RST_AB_PIN | U350_RST_CD_PIN, GPIO_PIN_RESET);
 
-	/* ---- GPIOE outputs: U300 reseth, serit LDO's, relay control
-	 * ------------------------- */
-	/*	PE1 - Serit 3v3 LDO enable (VERIFIED)
-		PE0 - Serit 1V0 enable (VERIFIED)
-		PE2 - Controls subminiature relay*/
+	/* ---- GPIOE outputs:
+	U300 reset, serit LDO's, relay control, FPGA reset+Flash write-protect */
+
+	/*	PE1 - Serit 3v3 LDO enable
+		PE0 - Serit 1V0 enable
+		PE2 - Controls subminiature relay
+		PE5 - Reset FPGA and unlock WP of 1Mbit Flash memory
+	*/
 
 	gpio.Pin = U300_RST_AB_PIN | SERIT_3V3_SUPPLY_EN_PIN |
-			   SERIT_1V0_SUPPLY_EN_PIN | RELAY_ENABLE_PIN;
+			   SERIT_1V0_SUPPLY_EN_PIN | RELAY_ENABLE_PIN | FPGA_PROG_B_PIN;
+
 	gpio.Mode = GPIO_MODE_OUTPUT_PP;
 	gpio.Pull = GPIO_NOPULL;
 	gpio.Speed = GPIO_SPEED_FAST;
 
 	HAL_GPIO_Init(GPIOE, &gpio);
+
 	HAL_GPIO_WritePin(U300_RST_AB_PORT,
 					  U300_RST_AB_PIN | SERIT_3V3_SUPPLY_EN_PIN |
 						  SERIT_1V0_SUPPLY_EN_PIN | RELAY_ENABLE_PIN,
 					  GPIO_PIN_RESET);
+
+	/* Allow FPGA to boot by default, and protect FLASH content
+	 *(traces tied together)*/
+	HAL_GPIO_WritePin(FPGA_PROG_B_PORT, FPGA_PROG_B_PIN, GPIO_PIN_SET);
 }
 
 /*enable 1v0 and 3v3 LDO's for SERIT*/
@@ -1532,16 +1541,12 @@ void eeprom_uart_dumper()
 	if (eeprom_dump_run == 1)
 	{
 		static uint16_t dump_addr = 0;
-		static uint32_t last_dump_tick = 0;
 
 		if (fifo_is_full(&tx_fifo_rs485, UART_TX_BUF_SIZE)) return;
 
-		// if (HAL_GetTick() - last_dump_tick >= 10)
 		if (fifo_count(&tx_fifo_rs485, UART_TX_BUF_SIZE) <
 			(UART_TX_BUF_SIZE - (56 * 2)))
 		{
-			last_dump_tick = HAL_GetTick();
-
 			uint8_t chunk[16]; /*row dumps*/
 			char buf[56];	   // 5 byte + 48 + 2 = 55 byte
 
