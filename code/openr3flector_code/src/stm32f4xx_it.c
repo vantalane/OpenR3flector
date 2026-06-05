@@ -90,9 +90,13 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef* huart)
 	// LED_Toggle(LED_ID_RED_RIGHT);
 
 	if (huart->Instance == USARTx)
+	{
+		tx_fifo.tail += tx_inflight_len;
 		uart_tx_running = 0;
+	}
 	else if (huart->Instance == USARTx_RS485)
 	{
+		tx_fifo_rs485.tail += tx_rs485_inflight_len;
 		HAL_GPIO_WritePin(USARTx_RS485_DE_GPIO_PORT, USARTx_RS485_DE_PIN,
 						  GPIO_PIN_RESET);
 		uart_r485_tx_running = 0;

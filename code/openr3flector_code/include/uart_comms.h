@@ -39,6 +39,7 @@ extern uart_fifo_t rx_fifo;
 extern uart_fifo_t tx_fifo;
 extern volatile uint8_t s_rx_byte; /* single byte for HAL_UART_Receive_IT */
 extern volatile uint8_t uart_tx_running;
+extern volatile uint16_t tx_inflight_len;
 
 /* uart stuff for the RS 485 interface*/
 extern uart_fifo_t rx_fifo_rs485;
@@ -46,6 +47,7 @@ extern uart_fifo_t tx_fifo_rs485;
 /* single byte for HAL_UART_Receive_IT */
 extern volatile uint8_t s_rx_byte_rs485;
 extern volatile uint8_t uart_r485_tx_running;
+extern volatile uint16_t tx_rs485_inflight_len;
 
 typedef enum
 {
@@ -67,7 +69,8 @@ typedef enum
 	CMD_CHIRP = 'j',
 	CMD_DEBUG = 'd',
 	CMD_LNBSET = 'p',
-	CMD_PLAN = 'l' /*traj plan print*/
+	CMD_PLAN = 'l', /*traj plan debug print*/
+	CMD_DUMP = 'y', /* dump EEPROM or FLASH contents to RS485 uart*/
 
 } uart_commands_t;
 

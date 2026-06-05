@@ -229,4 +229,11 @@ HAL_StatusTypeDef lnb_set_off();
 HAL_StatusTypeDef lnb_set_horizontal();
 HAL_StatusTypeDef lnb_set_vertical();
 
+/*Memory to enable dumping of the i2c EEPROM, self un-sets*/
+extern uint8_t eeprom_dump_run;
+void eeprom_uart_dumper();
+
+extern uint8_t flash_dump_run;
+void flash_uart_dumper();
+
 #endif /* FUNCTIONS_H */

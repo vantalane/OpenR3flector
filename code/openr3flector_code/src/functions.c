@@ -1523,3 +1523,66 @@ HAL_StatusTypeDef lnb_set_off()
 	// return HAL_I2C_Master_Transmit(&i2c2_handle, LNBH29_ADDR, &ctrl_cmd, 1,
 	// 50);
 }
+
+/*functions to dump non volatile memory contents*/
+uint8_t eeprom_dump_run = 0;
+
+void eeprom_uart_dumper()
+{
+	if (eeprom_dump_run == 1)
+	{
+		static uint16_t dump_addr = 0;
+		static uint32_t last_dump_tick = 0;
+
+		if (fifo_is_full(&tx_fifo_rs485, UART_TX_BUF_SIZE)) return;
+
+		// if (HAL_GetTick() - last_dump_tick >= 10)
+		if (fifo_count(&tx_fifo_rs485, UART_TX_BUF_SIZE) <
+			(UART_TX_BUF_SIZE - (56 * 2)))
+		{
+			last_dump_tick = HAL_GetTick();
+
+			uint8_t chunk[16]; /*row dumps*/
+			char buf[56];	   // 5 byte + 48 + 2 = 55 byte
+
+			if (eeprom_read(dump_addr, chunk, 16) == HAL_OK)
+			{
+				int pos = snprintf(buf, sizeof(buf), "%04X:", dump_addr);
+
+				for (int i = 0; i < 16; i++)
+					pos += snprintf(buf + pos, sizeof(buf) - pos, " %02X",
+									chunk[i]);
+				buf[pos++] = '\r';
+				buf[pos++] = '\n';
+				buf[pos] = '\0';
+				UART_RS485_SendString(buf);
+			}
+
+			dump_addr += 16;
+			if (dump_addr >= 0x8000)
+			{
+				dump_addr = 0;
+				eeprom_dump_run = 0;
+				UART_RS485_SendString("eeprom dump done\r\n");
+			}
+		}
+	}
+}
+
+uint8_t flash_dump_run = 0;
+void flash_uart_dumper()
+{
+	//
+}
+
+/* TODO make drivers to operate the I2C to SPI bridge, reset/unreset the FPGA
+ * accordingly*/
+
+/*To read SPI flash, we'll prevent the FPGA from booting by using PROG_B, which
+will also make SPI flash writable. After that, take over the SPI flash with the
+MUX, and start to dump the flash.*/
+
+/*thus plan of approach is;
+- spi bridge control (check health, takeover, read bytes, write bytes)
+- disable fpga
+- */

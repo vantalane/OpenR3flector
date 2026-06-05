@@ -28,6 +28,7 @@ uart_fifo_t rx_fifo = {0};
 uart_fifo_t tx_fifo = {0};
 volatile uint8_t s_rx_byte;
 volatile uint8_t uart_tx_running = 0;
+volatile uint16_t tx_inflight_len = 0;
 
 UART_HandleTypeDef UartHandle;
 
@@ -37,6 +38,7 @@ uart_fifo_t rx_fifo_rs485 = {0};
 uart_fifo_t tx_fifo_rs485 = {0};
 volatile uint8_t s_rx_byte_rs485;
 volatile uint8_t uart_r485_tx_running = 0;
+volatile uint16_t tx_rs485_inflight_len = 0;
 
 /* ---- FIFO helpers ---- */
 uint16_t fifo_count(uart_fifo_t* f, uint16_t size)
@@ -522,6 +524,40 @@ void UART_ProcessCommand(const char* cmd)
 			send_motion_plan();
 			break;
 
+		case CMD_DUMP:
+			// CMD_DUMP;
+			uint8_t dump_mode1, dump_mode2;
+
+			if (parse_two_bytes_strict(buf, &dump_mode1, &dump_mode2))
+			{
+				snprintf(reply, sizeof(reply),
+						 "ERR: wrong length. CMD, MODE1,MODE2 and the modes = "
+						 "eachother\n");
+				uart_reply(reply);
+			}
+			else
+			{
+				if (dump_mode1 == 0)
+				{
+					eeprom_dump_run = 1;
+					snprintf(reply, sizeof(reply), "Chose eeprom dump\n\r");
+				}
+				else if (dump_mode1 == 1)
+				{
+					snprintf(reply, sizeof(reply), "Chose flash dump TODO\n\r");
+					flash_dump_run = 0;	 // TODO
+				}
+				else
+				{
+					snprintf(reply, sizeof(reply), "Invalid decision: %u\n\r",
+							 dump_mode1);
+				}
+
+				uart_reply(reply);
+			}
+
+			break;
+
 		default:
 			snprintf(reply, sizeof(reply), "ERR: CMD %u unknown.\n", buf[0]);
 			uart_reply(reply);
@@ -571,13 +607,11 @@ void UART_Poll(void)
 				len = UART_TX_BUF_SIZE - tail_phys;
 
 			uart_tx_running = 1;
+			tx_inflight_len = len;
 
 			HAL_UART_Transmit_IT(
 				&UartHandle,
 				&tx_fifo.buf[tx_fifo.tail & (UART_TX_BUF_SIZE - 1)], len);
-
-			/*keep it free running, physical position always via & mask*/
-			tx_fifo.tail += len;
 		}
 	}
 }
@@ -587,6 +621,7 @@ void UART_RS485_Poll(void)
 	static char cmd_buf[UART_CMD_BUF_SIZE];
 	static uint8_t cmd_idx = 0;
 
+	/*THE RX HANDLER*/
 	while (!fifo_is_empty(&rx_fifo_rs485))
 	{
 		uint8_t byte = fifo_pop(&rx_fifo_rs485, UART_RX_BUF_SIZE);
@@ -620,6 +655,7 @@ void UART_RS485_Poll(void)
 				len = UART_TX_BUF_SIZE - tail_phys;
 
 			uart_r485_tx_running = 1;
+			tx_rs485_inflight_len = len;
 			HAL_UART_AbortReceive_IT(&UartHandle_rs485);
 			HAL_GPIO_WritePin(USARTx_RS485_DE_GPIO_PORT, USARTx_RS485_DE_PIN,
 							  GPIO_PIN_SET);
@@ -629,8 +665,6 @@ void UART_RS485_Poll(void)
 				(uint8_t*)&tx_fifo_rs485
 					.buf[tx_fifo_rs485.tail & (UART_TX_BUF_SIZE - 1)],
 				len);
-
-			tx_fifo_rs485.tail += len;
 		}
 	}
 }

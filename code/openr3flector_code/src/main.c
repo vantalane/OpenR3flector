@@ -100,7 +100,8 @@ int main(void)
 		Device_StateMachine();
 		piezo_pattern_fsm();
 
-		now_ticks = HAL_GetTick();
+		/* dump contents of the EEPROM when triggered*/
+		eeprom_uart_dumper();
 
 		now_ticks = HAL_GetTick();
 		/*PID and trajectory control of motors*/
