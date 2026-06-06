@@ -74,10 +74,9 @@ int main(void)
 	i2c1-found I2C device: 0x28 (probably I2C to SPI bridge)
 	i2c1-found I2C device: 0x50 (EEPROM)
 	i2c2-found I2C device: 0x08 (LNBH29 IC)
-	i2c3-found I2C device: 0x68 ()
+	i2c3-found I2C device: 0x68 (STV0903 decoder)
+	 (datasheet says 0xD0 write, 0xD1 read for the decoder)
 	*/
-
-	/*TODO, flash dump MXIC for bitstream*/
 
 	uart_reply("Inits done\n\r");
 	// UART_SendString("Inits done\n\r");

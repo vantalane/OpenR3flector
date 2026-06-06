@@ -153,20 +153,6 @@
 #define FILM_BUTTON_PORT GPIOA
 #define FILM_BUTTON_PIN GPIO_PIN_0
 
-/*LNBH29 LNB bias IC pin defs*/
-/*LNB control pins*/
-#define LNB_DSQIN_PORT GPIOA
-#define LNB_DSQIN_PIN GPIO_PIN_2
-/*lnb i2c addr, with wr/rd shift*/
-#define LNBH29_ADDR (0x08 << 1)
-
-/*SERIT supply control stuff*/
-#define SERIT_3V3_SUPPLY_EN_PIN GPIO_PIN_1
-#define SERIT_1V0_SUPPLY_EN_PIN GPIO_PIN_0
-#define SERIT_SUPPLY_PORT GPIOE
-
-#define RELAY_ENABLE_PIN GPIO_PIN_2
-
 /* ============================================================================
  * PWM / Timer configuration
  *
@@ -181,16 +167,41 @@
 #define PIEZO_PERIOD 999U
 #define PIEZO_PRESCALER 4U
 
+/*LNBH29 LNB bias IC pin defs*/
+/*LNB control pins*/
+#define LNB_DSQIN_PORT GPIOA
+#define LNB_DSQIN_PIN GPIO_PIN_2
+/*lnb i2c addr, with wr/rd shift*/
+#define LNBH29_ADDR (0x08 << 1)
+
 /*timer configuration for the 22khz tone, TIM9 is 16-bit up counter*/
 #define LNB_TIM_PERIOD 908U
 #define LNB_TIM_PRESCALER 4U
 
+/*SERIT supply control stuff*/
+#define SERIT_3V3_SUPPLY_EN_PIN GPIO_PIN_1
+#define SERIT_1V0_SUPPLY_EN_PIN GPIO_PIN_0
+#define SERIT_SUPPLY_PORT GPIOE
+
+/*SERIT NIM control*/
+/*TODO initialize*/
+#define SERIT_RESET_PIN GPIO_PIN_3	// PE3
+#define SERIT_ERROR_PIN GPIO_PIN_$	// PE4
+
+/*TODO UNKNOWN MAGIC RELAY, maybe DC passthru?*/
+#define RELAY_ENABLE_PIN GPIO_PIN_2
+
 /*FPGA interfacing PINS*/
 
-#define FPGA_PROG_B_PIN GPIO_PIN_5
+/* TODO add the pins shared between the fpga and the stm32*/
+#define FPGA_PROG_B_PIN GPIO_PIN_5	// PE5
 #define FPGA_PROG_B_PORT GPIOE
 
-/*TODO add the pins shared between the fpga and the stm32*/
+/*wiring to fpga's PIN number*/
+#define FPGA_DIRECT_P100_PIN GPIO_PIN_5	 // direct PE5, SPI4/5 MISO
+#define FPGA_DIRECT_P7_PIN GPIO_PIN_6	 // direct PE6, SPI4/5 MOSI capable
+#define FPGA_DIRECT_P50_PIN GPIO_PIN_5	 // direct PB5, i2cSMBA, SPI1/3 MOSI
+#define FPGA_DIRECT_P10_PIN GPIO_PIN_9	 // direct PB9, i2c2sda,i2c1sda?
 
 /*Controls for the MXIC flash etc*/
 /*The flash is accessed over I2C to SPI bridge, see notes/mmi**/
