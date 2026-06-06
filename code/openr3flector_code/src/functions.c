@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "bus_peripherals.h"
 #include "main.h"
 #include "motor_control.h"
 #include "stm32f411xe.h"
@@ -1574,20 +1575,234 @@ void eeprom_uart_dumper()
 	}
 }
 
-uint8_t flash_dump_run = 0;
-void flash_uart_dumper()
+/* SC18IS602B I2C-SPI bridge to MX25V1006E flash driver functs */
+
+#define SC18_ADDR (0x28u << 1)
+#define FLASH_SIZE 0x20000u
+#define CHUNK_BYTES 128u
+
+static HAL_StatusTypeDef sc18_write(uint8_t* buf, uint8_t len)
 {
-	//
+	/* (100 kHz I2C clk) 200 byte max buffer of mxic is ~18 ms thus 50 ms gives
+	 * safe margin */
+	return HAL_I2C_Master_Transmit(&i2c1_handle, SC18_ADDR, buf, len, 50);
 }
 
-/* TODO make drivers to operate the I2C to SPI bridge, reset/unreset the FPGA
- * accordingly*/
+static HAL_StatusTypeDef sc18_read(uint8_t* buf, uint8_t len)
+{
+	return HAL_I2C_Master_Receive(&i2c1_handle, SC18_ADDR, buf, len, 50);
+}
 
-/*To read SPI flash, we'll prevent the FPGA from booting by using PROG_B, which
-will also make SPI flash writable. After that, take over the SPI flash with the
-MUX, and start to dump the flash.*/
+/* drive MUX S LOW -> SC18IS602B owns the flash bus */
+static HAL_StatusTypeDef sc18_mux_takeover(void)
+{
+	uint8_t cmd[2];
+	HAL_StatusTypeDef s;
 
-/*thus plan of approach is;
-- spi bridge control (check health, takeover, read bytes, write bytes)
-- disable fpga
-- */
+	cmd[0] = GPIO_ENABLE;
+	cmd[1] = 0x02; /* SS1 = GPIO */
+	s = sc18_write(cmd, 2);
+	if (s != HAL_OK) return s;
+
+	cmd[0] = GPIO_CONF;
+	cmd[1] = 0x04; /* SS1 = push-pull */
+	s = sc18_write(cmd, 2);
+	if (s != HAL_OK) return s;
+
+	cmd[0] = SPI_CONF;
+	cmd[1] = 0x00; /* Mode 0, MSB first, 1.843 MHz */
+	s = sc18_write(cmd, 2);
+	if (s != HAL_OK) return s;
+
+	cmd[0] = GPIO_WRITE;
+	cmd[1] = 0x00; /* SS1 LOW -> MUX routes to IS602B */
+	return sc18_write(cmd, 2);
+}
+
+/* drive MUX S HIGH -> FPGA owns the flash bus again */
+static HAL_StatusTypeDef sc18_mux_release(void)
+{
+	uint8_t cmd[2];
+	HAL_StatusTypeDef s;
+
+	cmd[0] = GPIO_WRITE;
+	cmd[1] = 0x02; /* SS1 HIGH -> MUX routes to FPGA */
+	s = sc18_write(cmd, 2);
+	if (s != HAL_OK) return s;
+
+	cmd[0] = GPIO_ENABLE;
+	cmd[1] = 0x00; /* restore all pins as SPI SS */
+	return sc18_write(cmd, 2);
+}
+
+/* read 3-byte JEDEC ID. Expected: 0xC2, 0x20, 0x11 */
+static HAL_StatusTypeDef mx25_read_jedec(uint8_t id[3])
+{
+	uint8_t tx[5] = {SS0, 0x9F, 0xFF, 0xFF, 0xFF};
+	uint8_t rx[5] = {0};
+	HAL_StatusTypeDef s;
+
+	s = sc18_write(tx, 5);
+	if (s != HAL_OK)
+	{
+		char m[40];
+		snprintf(m, sizeof(m), "jedec: write fail st=%u\r\n", (unsigned)s);
+		UART_RS485_SendString(m);
+		return s;
+	}
+	HAL_Delay(1);
+	s = sc18_read(rx, 5);
+	if (s != HAL_OK)
+	{
+		char m[40];
+		snprintf(m, sizeof(m), "jedec: read fail st=%u\r\n", (unsigned)s);
+		UART_RS485_SendString(m);
+		return s;
+	}
+
+	{
+		char m[56];
+		snprintf(m, sizeof(m), "jedec raw: %02X %02X %02X %02X %02X\r\n", rx[0],
+				 rx[1], rx[2], rx[3], rx[4]);
+		UART_RS485_SendString(m);
+	}
+
+	id[0] = rx[1];
+	id[1] = rx[2];
+	id[2] = rx[3];
+	return HAL_OK;
+}
+
+/*
+ * read 128 bytes from flash at addr.
+ * SPI transaction: [0x03, A2, A1, A0, 0xFF x128] = 132 bytes on wire.
+ * I2C write: [SS0_func_id] + 132 SPI bytes = 133 bytes.
+ * Read-back: 132 bytes. Skip first 4 (MISO during cmd+addr = don't care),
+ * take rx[4..131].
+ */
+static HAL_StatusTypeDef mx25_read_128(uint32_t addr, uint8_t data[CHUNK_BYTES])
+{
+	uint8_t tx[133];
+	uint8_t rx[132];
+	HAL_StatusTypeDef s;
+
+	tx[0] = SS0;
+	tx[1] = 0x03;
+	tx[2] = (addr >> 16) & 0xFF;
+	tx[3] = (addr >> 8) & 0xFF;
+	tx[4] = addr & 0xFF;
+	memset(&tx[5], 0xFF, CHUNK_BYTES);
+
+	s = sc18_write(tx, 133);
+	if (s != HAL_OK)
+	{
+		char m[48];
+		snprintf(m, sizeof(m), "mx25 wr fail addr=%06X st=%u\r\n",
+				 (unsigned)addr, (unsigned)s);
+		UART_RS485_SendString(m);
+		return s;
+	}
+	HAL_Delay(2);
+	s = sc18_read(rx, 132);
+	if (s != HAL_OK)
+	{
+		char m[48];
+		snprintf(m, sizeof(m), "mx25 rd fail addr=%06X st=%u\r\n",
+				 (unsigned)addr, (unsigned)s);
+		UART_RS485_SendString(m);
+		return s;
+	}
+
+	memcpy(data, &rx[4], CHUNK_BYTES);
+	return HAL_OK;
+}
+
+uint8_t flash_dump_run = 0;
+void flash_uart_dumper(void)
+{
+	if (!flash_dump_run) return;
+
+	static uint8_t state = 0;
+	static uint32_t dump_addr = 0;
+
+	switch (state)
+	{
+		case 0: /* init */
+		{
+			uint8_t id[3] = {0};
+			if (sc18_mux_takeover() != HAL_OK)
+			{
+				UART_RS485_SendString("flash: mux takeover failed\r\n");
+				flash_dump_run = 0;
+				return;
+			}
+			if (mx25_read_jedec(id) != HAL_OK || id[0] != 0xC2 ||
+				id[1] != 0x20 || id[2] != 0x11)
+			{
+				char msg[48];
+				snprintf(msg, sizeof(msg),
+						 "flash: bad JEDEC %02X %02X %02X\r\n", id[0], id[1],
+						 id[2]);
+				UART_RS485_SendString(msg);
+				sc18_mux_release();
+				flash_dump_run = 0;
+				state = 0;
+				return;
+			}
+			UART_RS485_SendString("flash: JEDEC OK, dumping...\r\n");
+			dump_addr = 0;
+			state = 1;
+			break;
+		}
+
+		case 1: /* read */
+		{
+			/* Need space for 8 lines × ~60 chars each = 480 bytes.
+			 * Gate on half-empty. */
+			if (fifo_count(&tx_fifo_rs485, UART_TX_BUF_SIZE) >
+				(UART_TX_BUF_SIZE - 480))
+				return;
+
+			uint8_t chunk[CHUNK_BYTES];
+			if (mx25_read_128(dump_addr, chunk) != HAL_OK)
+			{
+				UART_RS485_SendString("flash: read error\r\n");
+				sc18_mux_release();
+				flash_dump_run = 0;
+				state = 0;
+				dump_addr = 0;
+				return;
+			}
+
+			/* Format 8 lines of 16 bytes: "AAAAAA: XX XX ... XX\r\n" */
+			for (int row = 0; row < 8; row++)
+			{
+				char buf[60];
+				int pos = snprintf(
+					buf, sizeof(buf),
+					"%06X:", (unsigned int)(dump_addr + (uint32_t)(row * 16)));
+				for (int i = 0; i < 16; i++)
+					pos += snprintf(buf + pos, sizeof(buf) - pos, " %02X",
+									chunk[row * 16 + i]);
+				buf[pos++] = '\r';
+				buf[pos++] = '\n';
+				buf[pos] = '\0';
+				UART_RS485_SendString(buf);
+			}
+
+			dump_addr += CHUNK_BYTES;
+			if (dump_addr >= FLASH_SIZE) state = 2;
+			break;
+		}
+
+		case 2: /* done */
+		{
+			sc18_mux_release();
+			UART_RS485_SendString("flash dump done\r\n");
+			flash_dump_run = 0;
+			dump_addr = 0;
+			state = 0;
+			break;
+		}
+	}
+}

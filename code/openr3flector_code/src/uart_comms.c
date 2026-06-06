@@ -544,8 +544,8 @@ void UART_ProcessCommand(const char* cmd)
 				}
 				else if (dump_mode1 == 1)
 				{
-					snprintf(reply, sizeof(reply), "Chose flash dump TODO\n\r");
-					flash_dump_run = 0;	 // TODO
+					snprintf(reply, sizeof(reply), "Chose flash dump\n\r");
+					flash_dump_run = 1;
 				}
 				else
 				{

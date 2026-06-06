@@ -102,6 +102,7 @@ int main(void)
 
 		/* dump contents of the EEPROM when triggered*/
 		eeprom_uart_dumper();
+		flash_uart_dumper();
 
 		now_ticks = HAL_GetTick();
 		/*PID and trajectory control of motors*/

@@ -192,8 +192,11 @@
 
 /*TODO add the pins shared between the fpga and the stm32*/
 
-/*COntrols for the MXIC flash etc*/
-/*TODO*/
+/*Controls for the MXIC flash etc*/
+/*The flash is accessed over I2C to SPI bridge, see notes/mmi**/
+// #define SC18_ADDR (0x28 << 1)
+// #define FLASH_SIZE 0x20000u /* 128 KB */
+// #define CHUNK_BYTES 128u
 
 /*TODO, try setting prog HIGH explicitly, to see if fpga does anything.*/
 
