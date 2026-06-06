@@ -103,7 +103,7 @@ J150 pin header 2P (write protect flash, reset fpga combi)
 	- fpga prog -> R173 (10k) -> 3v3 side of R174 (1k) -> WP pin of flash.
 
   Which means, the jumper (or STM) can pull pull fpga's prog pin DOWN, which normally would be PULLED UP.
-  thus, while PROG is high, WP of flash is pulled DOWN, which protects the FLASH from being written.
+  thus, while PROG is high, WP of flash is pulled DOWN (by mosfet), which protects the FLASH from being written.
   "allowing" the WP to be HIGH, allows flash to be edited, which implies FPGA to be in a RESET state (Prog low).
 
   Thus summary again, prog b low, fpga in reset, flash editable. Can be done via short, or STM32 port tied LOW.
@@ -205,7 +205,7 @@ pin 8 - Vcc 3V supply
 U553 
 	was a fckn LDO, 1A low queiescent ldo. likely fpga supply.
 	marketed as MCP1726
-
+1.8V?
 
 
 
