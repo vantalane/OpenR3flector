@@ -5,3 +5,26 @@ XC3S50A
 
 using the VQ100 package.
 
+reverse engineering bitstreams
+
+As hardware is Xilinx spartan 3A, its supported by Xilinx ISE. Last version is 14.7 and was released in 2013 
+
+Sources:
+https://cadforassurance.org/wp-content/uploads/Experiment_11_bitstream.pdf
+https://scispace.com/pdf/a-comprehensive-fpga-reverse-engineering-tool-chain-from-1fwk4ydx40.pdf
+https://www.enggjournals.com/ijet/docs/IJET18-10-02-026.pdf
+
+
+according to UG332 page 38:
+
+by default, uncompressed bitstream is constant size.
+
+Default part num 3S50A/AN (ours) has 437,312 configuration bits.
+
+Bitstream format described in XAPP452 
+
+Device frames 367
+frame words 74
+conf array size 147,600
+conf overhead words 174
+

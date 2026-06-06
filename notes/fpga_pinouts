@@ -33,7 +33,7 @@ Fpga loads bitstream in MXIC flash as slv mode.
 
 
 PIN 1 - TMS J151 connector pin 2
-PIN 2 - TMS J151 connector pin 5
+PIN 2 - TDI J151 connector pin 5
 PIN 3 -
 PIN 4 -
 PIN 5 - 
