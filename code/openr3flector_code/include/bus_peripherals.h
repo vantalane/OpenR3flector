@@ -196,7 +196,7 @@ enum stv0903_regs
 	CFR0 = 0xF44E,
 	LDI = 0xF44F,
 	TMGCFG = 0xF450,
-	RTC = 0xF451,
+	RTC_STV = 0xF451,  // had naming clash
 	RTCS2 = 0xF452,
 	TMGTHRISE = 0xF453,
 	TMGTHFALL = 0xF454,

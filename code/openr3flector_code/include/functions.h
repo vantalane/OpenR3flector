@@ -121,12 +121,6 @@ void GPIO_Init(void);
 void TIM1_PWM_Init(void);
 void TIM4_PIEZO_PWM_init(void);
 void TIM9_LNB_control_tone_init(void);
-void turn_on_serit_supply();
-void turn_off_serit_supply();
-void set_lnb_lo_low(void);
-void set_lnb_lo_high(void);
-void turn_off_relay();
-void turn_on_relay();
 
 /* encoder pins init of external interrupt*/
 void Encoder_Init(void);
@@ -214,25 +208,39 @@ uint8_t i2c_scan(I2C_HandleTypeDef* hi2c, uint8_t* found_addrs,
 /*----- One-off functions for dumping data kept in the EEPROM and Flash*/
 /*Read len bytes from the 24AA2561 EEPROM starting at mem_addr. */
 HAL_StatusTypeDef eeprom_read(uint16_t mem_addr, uint8_t* buf, uint16_t len);
-
-/* Write len bytes to the 24AA2561 EEPROM. len must not cross a 64-byte page
- * boundary. Caller must wait 5 ms after return before the next operation. */
+/* Write len bytes to 24AA2561 EEPROM. len must not be > 64B
+ * wait 5 ms after return*/
 HAL_StatusTypeDef eeprom_write(uint16_t mem_addr, uint8_t* buf, uint16_t len);
 
-/*TODO bring back eeprom dump FSM (as uart tx buff clears per prog. loop)*/
-
-/*TODO, add function to dump MXIC flash contents of FPGA*/
-/*TODO, add function(+script) to flash bitsream onto flash memory for FPGA */
+/* Helper functions to operate SPI flash thru I2C-SPI bridge*/
+HAL_StatusTypeDef sc18_write(uint8_t* buf, uint8_t len);
+HAL_StatusTypeDef sc18_read(uint8_t* buf, uint8_t len);
+/*Take over flash from FPGA to STM*/
+HAL_StatusTypeDef sc18_mux_takeover(void);
+HAL_StatusTypeDef sc18_mux_release(void);
+/*read FLASH jedec ID as validation/test */
+HAL_StatusTypeDef mx25_read_jedec(uint8_t id[3]);
+/*read 128 bytes from flash*/
+HAL_StatusTypeDef mx25_read_128(uint32_t addr, uint8_t* data);
 
 /*Functions to operate LNB supply IC thru I2C*/
 HAL_StatusTypeDef lnb_set_off();
 HAL_StatusTypeDef lnb_set_horizontal();
 HAL_StatusTypeDef lnb_set_vertical();
+void set_lnb_lo_low(void);	 // by changing bias tee voltage
+void set_lnb_lo_high(void);	 // by changing bias tee voltage
 
-/*Memory to enable dumping of the i2c EEPROM, self un-sets*/
+/*SERIT RF frontend NIM related */
+void turn_on_serit_supply();
+void turn_off_serit_supply();
+void turn_off_relay();
+void turn_on_relay();
+
+/*TODO, add function(+script) to flash bitsream onto flash memory for FPGA */
+/*EEPROM content dump to RS485 uart*/
 extern uint8_t eeprom_dump_run;
 void eeprom_uart_dumper();
-
+/*SPI flash content dump to RS485 uart*/
 extern uint8_t flash_dump_run;
 void flash_uart_dumper();
 

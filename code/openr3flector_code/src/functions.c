@@ -1576,25 +1576,20 @@ void eeprom_uart_dumper()
 }
 
 /* SC18IS602B I2C-SPI bridge to MX25V1006E flash driver functs */
-
-#define SC18_ADDR (0x28u << 1)
-#define FLASH_SIZE 0x20000u
-#define CHUNK_BYTES 128u
-
-static HAL_StatusTypeDef sc18_write(uint8_t* buf, uint8_t len)
+HAL_StatusTypeDef sc18_write(uint8_t* buf, uint8_t len)
 {
 	/* (100 kHz I2C clk) 200 byte max buffer of mxic is ~18 ms thus 50 ms gives
 	 * safe margin */
 	return HAL_I2C_Master_Transmit(&i2c1_handle, SC18_ADDR, buf, len, 50);
 }
 
-static HAL_StatusTypeDef sc18_read(uint8_t* buf, uint8_t len)
+HAL_StatusTypeDef sc18_read(uint8_t* buf, uint8_t len)
 {
 	return HAL_I2C_Master_Receive(&i2c1_handle, SC18_ADDR, buf, len, 50);
 }
 
 /* drive MUX S LOW -> SC18IS602B owns the flash bus */
-static HAL_StatusTypeDef sc18_mux_takeover(void)
+HAL_StatusTypeDef sc18_mux_takeover(void)
 {
 	uint8_t cmd[2];
 	HAL_StatusTypeDef s;
@@ -1620,7 +1615,7 @@ static HAL_StatusTypeDef sc18_mux_takeover(void)
 }
 
 /* drive MUX S HIGH -> FPGA owns the flash bus again */
-static HAL_StatusTypeDef sc18_mux_release(void)
+HAL_StatusTypeDef sc18_mux_release(void)
 {
 	uint8_t cmd[2];
 	HAL_StatusTypeDef s;
@@ -1636,7 +1631,7 @@ static HAL_StatusTypeDef sc18_mux_release(void)
 }
 
 /* read 3-byte JEDEC ID. Expected: 0xC2, 0x20, 0x11 */
-static HAL_StatusTypeDef mx25_read_jedec(uint8_t id[3])
+HAL_StatusTypeDef mx25_read_jedec(uint8_t id[3])
 {
 	uint8_t tx[5] = {SS0, 0x9F, 0xFF, 0xFF, 0xFF};
 	uint8_t rx[5] = {0};
@@ -1680,8 +1675,9 @@ static HAL_StatusTypeDef mx25_read_jedec(uint8_t id[3])
  * Read-back: 132 bytes. Skip first 4 (MISO during cmd+addr = don't care),
  * take rx[4..131].
  */
-static HAL_StatusTypeDef mx25_read_128(uint32_t addr, uint8_t data[CHUNK_BYTES])
+HAL_StatusTypeDef mx25_read_128(uint32_t addr, uint8_t* data)
 {
+	const uint8_t CHUNK_BYTES = DUMP_CHUNK_BYTES;
 	uint8_t tx[133];
 	uint8_t rx[132];
 	HAL_StatusTypeDef s;
@@ -1722,6 +1718,7 @@ void flash_uart_dumper(void)
 {
 	if (!flash_dump_run) return;
 
+	const uint8_t CHUNK_BYTES = DUMP_CHUNK_BYTES;
 	static uint8_t state = 0;
 	static uint32_t dump_addr = 0;
 
@@ -1764,6 +1761,7 @@ void flash_uart_dumper(void)
 				return;
 
 			uint8_t chunk[CHUNK_BYTES];
+
 			if (mx25_read_128(dump_addr, chunk) != HAL_OK)
 			{
 				UART_RS485_SendString("flash: read error\r\n");

@@ -198,6 +198,7 @@
 #define FPGA_PROG_B_PORT GPIOE
 
 /*wiring to fpga's PIN number*/
+/*TODO utilize*/
 #define FPGA_DIRECT_P100_PIN GPIO_PIN_5	 // direct PE5, SPI4/5 MISO
 #define FPGA_DIRECT_P7_PIN GPIO_PIN_6	 // direct PE6, SPI4/5 MOSI capable
 #define FPGA_DIRECT_P50_PIN GPIO_PIN_5	 // direct PB5, i2cSMBA, SPI1/3 MOSI
@@ -205,10 +206,8 @@
 
 /*Controls for the MXIC flash etc*/
 /*The flash is accessed over I2C to SPI bridge, see notes/mmi**/
-// #define SC18_ADDR (0x28 << 1)
-// #define FLASH_SIZE 0x20000u /* 128 KB */
-// #define CHUNK_BYTES 128u
-
-/*TODO, try setting prog HIGH explicitly, to see if fpga does anything.*/
+#define SC18_ADDR (0x28u << 1)
+#define FLASH_SIZE 0x20000u
+#define DUMP_CHUNK_BYTES 128u
 
 #endif /* __MAIN_H */
