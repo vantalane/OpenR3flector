@@ -1,14 +1,16 @@
 SP2636S
+
 	
 
 ST chip solution: STV610A+STV0903BAB
+
 	
 
 Support CCM
+
 	
 
 Vertical/horizontal
-
 
 the chinese sat frontend has this on it:
  SP2637SHb S1943B-A
@@ -18,24 +20,26 @@ on PCBA silk
 SP2636S_PV5.0
 SP2636S_PV5.0
 
-
 https://www.diytrade.com/china/pd/19229110/FULL_NIM_SP2636SHb_SP2636SVb.html
  SP2636SHb SP2636SVb 
  
+
 	
+
 USES THESE INTERNALLY
 ST chip solution: STV610A+STV0903BAB
+
 	
+
 I2C communicated?
 
 Support CCM
+
 	
 
 Vertical/horizontal
 
 THIS DEVICE connects to the fpga with 9 impedance matched lines
-
-
 
 Online they say its based on the following two ST chips:
 
@@ -46,7 +50,6 @@ STV0903BAB
 "Multi-standard advanced demodulator
 for satellite digital TV and data services set-top boxes"
 
-
 chinese frontend thing has two resistors populated  out of four routed under it
 
 these are prolly I2C.
@@ -54,9 +57,8 @@ these are prolly I2C.
 R254 Goes to PB4 through a 100 ohm
 R255 goes to R61 then STM32 PA8
 
-R256 N.C
-R2 N.C.
-
+R256 N. C
+R2 N. C.
 
 TAKEAWAYS FROM ST CHIP SOLUTION STV6110A+STV0903BAB
 
@@ -65,15 +67,16 @@ can get 950 MHz to 2150 Mhz
 
 direct conversion (zero IF ?) receiver
 
-has input LNA,	
+has input LNA, 	
+
 	QP an QN diff out?
 	IN and IN diff out?
 
 	does it use IQ demodulation? with each component being a diff signal?
 
 	application diagram shows STV6110A and STV0903 with a LNBH23 in there for sat biasing
-	
 
+	
 
 Mini tiouner  thing covers SERIT NIM's 
 https://wiki.batc.org.uk/Serit_tuner
@@ -83,3 +86,80 @@ https://www.amsat-on.be/hamtv-summary/minitiouner-hardware/
 
 the relay could be to supply voltage to the 1st F plug through 2nd F pulg.
 
+Need to know the register maps of the STV6110 device, to configure it for reception.
+
+Linux driver implementations should be used as reference. We're flying blind here for the rest.
+
+https://github.com/torvalds/linux/blob/master/drivers/media/dvb-frontends/stv6110x.c
+
+https://github.com/torvalds/linux/blob/master/drivers/media/dvb-frontends/stv6110x.h
+
+https://github.com/torvalds/linux/blob/master/drivers/media/dvb-frontends/stv6110x_reg.h
+
+https://github.com/torvalds/linux/blob/master/drivers/media/dvb-frontends/stv6110x_reg.h
+
+https://github.com/torvalds/linux/blob/master/drivers/media/dvb-frontends/stv6110x_priv.h
+
+https://github.com/torvalds/linux/blob/master/drivers/media/dvb-frontends/stv6110.h#L19
+
+https://github.com/torvalds/linux/blob/master/drivers/media/dvb-frontends/stv6110.c#L248
+
+So best guestimate on STV6110A parameters are:
+
+XTAL is likely 27MHz
+
+Register MAP and the bit functions 
+
+0x00 CTRL1 REGISTER
+
+	bits	name	descripton
+	7:3		K		refclk_MHz - 16 (eg 27Mhz ref -> K = 11)
+	2:2		LPT		lowpass enable (set=1, disabled=0)
+	1:1		RX		RX path enable (set=1, disabled=0)
+	0:0		SYN		Synthesizer enable (set=1, disabled=0)
+
+0x01 CTRL2
+
+	7:6		CO_DIV	clock out divider (0=/1, 1=/2, 2=/4, 3=/8)
+	5:5		RSVD	reserved
+	4:4		REFOUT_SEL	Reference output select
+	3:0		BBGAIN	Baseband gain. val*2 (max 30 dB)
+
+0x02 TNG0
+
+	7:0		N_DIV[7:0]	N-divider LSB (lower byte of 12-bit word)
+
+0x03 TNG1
+
+	7:6		R_DIV	Reference predivide. ratio 1<<(val+1) (2,4,8,16)
+	5:5		PRESC32_ON	Prescaler 0=/16, 1=/32
+	4:4 	DIV4SEL VCO output divider. 1=/4 sub band (<1300MHz), 0=/2 (>1300MHz)
+	3:0		N_Div[11:8] N-divider MSB
+
+0x04 CTRL3
+
+	7:7 	DCLOOP_OFF DC feedback loop disable
+	6:6		RCCCLK_OFF 	LPF calibration clock (set=0, disabled=1)
+	5:5		ICP		Chargepump current select
+	4:0		LPF cuttoff BW=(CF+5)*2 MHz, range 10-72MHz
+
+0x05 STAT1	
+
+	2:2		CALVCO_STRT	VCO calib, set 1 to start, polled 0 when done
+	1:1		CALRC_STRT	LPF RC calib, set 1 to start, auto polled 0 when done
+	0:0 	LOCK	PLL lock state, locked=1
+
+0x06 STAT2
+unknown right now
+0x07 STAT3 
+unknown right now
+
+Default POWER ON values
+CTRL1	= 0x07 -> K=0, LPT=1, RX=1, SYN=1
+CTRL2 	= 0x11 -> CO_DIV=0, REFOUT_SEL=1, BBGAIN=1 (2db)
+TNG0	= 0xDC -> 220, (makes 0b 0101 1101 1100 thus 1500 in decimal)
+TNG1	= 0x85 -> R_DIV=2 (/8), PRESC32=0, DIV4sel=0, N_DIV=5
+CTRL3	= 0x17 -> RCCLK_OFF=0, ICP=0, CF=23 56MHz lpf
+STAT1	= 0x01 -> read LOCK 
+STAT2	= 0x
+STAT3	= 0x
